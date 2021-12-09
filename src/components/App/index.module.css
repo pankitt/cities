@@ -1,0 +1,5 @@
+.wrapper {
+  background: var(--color-light-blue);
+  width: 100vw;
+  height: 100vh;
+}
