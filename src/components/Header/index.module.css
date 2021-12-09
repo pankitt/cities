@@ -4,7 +4,7 @@
   justify-content: space-between;
   background-color: var(--color-blue);
   color: var(--color-white);
-  height: 60px;
+  height: var(--height-header);
   padding: 0 20px;
 }
 .nav {

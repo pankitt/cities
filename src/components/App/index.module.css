@@ -6,6 +6,6 @@
 }
 .main {
   display: flex;
-  width: 100%;
+  width: calc(100% - var(--width-navigation));
   flex-direction: column;
 }
