@@ -23,7 +23,10 @@ a {
 }
 
 :root {
+  --color-white: #fff;
+  --color-black: #000;
   --color-blue: #0079c4;
   --color-light-blue: #ecf5fd;
   --color-dark-blue: #2c405a;
+  --color-blue-grey: #7e95a7;
 }

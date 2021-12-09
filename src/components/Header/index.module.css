@@ -1,3 +1,20 @@
 .wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: var(--color-blue);
+  color: var(--color-white);
+  height: 60px;
+  padding: 0 20px;
+}
+.nav {
+  margin-left: 15px;
+}
+.settings {
+
+}
+.link {
+  color: var(--color-white);
+  cursor: pointer;
+  margin-right: 35px;
 }

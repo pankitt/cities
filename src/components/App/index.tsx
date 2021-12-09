@@ -7,8 +7,10 @@ import styles from './index.module.css';
 const App = (): JSX.Element => (
   <div className={styles.wrapper}>
     <Navigation />
-    <Header />
-    <Main />
+    <div className={styles.main}>
+      <Header />
+      <Main />
+    </div>
   </div>
 );
 
