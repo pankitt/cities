@@ -5,6 +5,14 @@ object-assign
 */
 
 /**
+ *
+ *
+ * @author Jerry Bendy <jerry@icewingcc.com>
+ * @licence MIT
+ *
+ */
+
+/**
  * React Router v6.0.2
  *
  * Copyright (c) Remix Software Inc.
