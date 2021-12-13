@@ -1,0 +1,13 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { createProxyMiddleware } = require('http-proxy-middleware');
+
+module.exports = (app) => {
+  app.use(
+    ['/v1/geo'],
+    createProxyMiddleware({
+      target: 'https://wft-geo-db.p.rapidapi.com',
+      secure: false,
+      changeOrigin: true
+    })
+  );
+};
