@@ -1,11 +1,17 @@
 .wrapper {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   background-color: var(--color-blue);
   color: var(--color-white);
   height: var(--height-header);
   padding: 0 20px;
+}
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: var(--width-page);
+  padding: 0 15px;
 }
 .nav {
 }
@@ -15,5 +21,5 @@
 .link {
   color: var(--color-white);
   cursor: pointer;
-  margin-right: 35px;
+  margin-right: 20px;
 }
