@@ -1,12 +1,13 @@
 import React, { FC } from 'react';
-import { ICountry } from 'types';
+import { ICountry, IMetaData } from 'types';
 import styles from './index.module.css';
 
 interface Props {
   countries: ICountry[];
+  metadata: IMetaData;
 }
 
-const Country: FC<Props> = ({ countries = [] }) => {
+const Country: FC<Props> = ({ countries = [], metadata = {} }) => {
   return (
     <div className={styles.wrapper}>
       {countries.map(({ code, name }) => (
@@ -14,6 +15,9 @@ const Country: FC<Props> = ({ countries = [] }) => {
           {name} - {code}
         </div>
       ))}
+      <div>
+        <h3>Total: {metadata.totalCount}</h3>
+      </div>
     </div>
   );
 };

@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { ICity } from 'types';
+import { ICity, IMetaData } from 'types';
 import { getCities } from 'api';
 
-export const useCities = (): readonly [ICity[], boolean] => {
+export const useCities = (): readonly [ICity[], IMetaData, boolean] => {
   const [cities, setCities] = useState<ICity[]>([]);
+  const [metaData, setMetaData] = useState<IMetaData>({} as IMetaData);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -14,6 +15,7 @@ export const useCities = (): readonly [ICity[], boolean] => {
       if (!cleanup) {
         setIsLoading(false);
         setCities(result.data);
+        setMetaData(result.metadata);
       }
     };
 
@@ -24,5 +26,5 @@ export const useCities = (): readonly [ICity[], boolean] => {
     };
   }, []);
 
-  return [cities, isLoading] as const;
+  return [cities, metaData, isLoading] as const;
 };

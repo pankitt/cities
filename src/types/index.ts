@@ -4,6 +4,11 @@ export interface ICountry {
   name: string;
   wikiDataId: string;
 }
+export type IMetaData = {
+  currentOffset: number;
+  totalCount: number;
+};
+
 export interface ICity {
   id: number;
   wikiDataId: string;

@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { ICountry } from 'types';
+import { ICountry, IMetaData } from 'types';
 import { getCountries } from 'api';
 
-export const useCountries = (): readonly [ICountry[], boolean] => {
-  const [countries, setCountries] = useState<ICountry[]>([]);
+export const useCountries = (): readonly [ICountry[], IMetaData, boolean] => {
+  const [countriesList, setCountriesList] = useState<ICountry[]>([]);
+  const [metaData, setMetaData] = useState<IMetaData>({} as IMetaData);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -13,7 +14,8 @@ export const useCountries = (): readonly [ICountry[], boolean] => {
       const result = await getCountries();
       if (!cleanup) {
         setIsLoading(false);
-        setCountries(result.data);
+        setCountriesList(result.data);
+        setMetaData(result.metadata);
       }
     };
 
@@ -24,5 +26,5 @@ export const useCountries = (): readonly [ICountry[], boolean] => {
     };
   }, []);
 
-  return [countries, isLoading] as const;
+  return [countriesList, metaData, isLoading] as const;
 };
