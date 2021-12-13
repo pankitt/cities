@@ -5,7 +5,7 @@ module.exports = (app) => {
   app.use(
     ['/v1/geo'],
     createProxyMiddleware({
-      target: 'https://wft-geo-db.p.rapidapi.com',
+      target: process.env.PROXY_TARGET,
       secure: false,
       changeOrigin: true
     })
