@@ -14,7 +14,7 @@ export const useCities = (): readonly [ICity[], IMetaData, boolean] => {
       const result = await getCities();
       if (!cleanup) {
         setIsLoading(false);
-        setCities(result.data);
+        setCities(result.data || result.message);
         setMetaData(result.metadata);
       }
     };

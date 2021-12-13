@@ -10,13 +10,14 @@ interface Props {
 const Country: FC<Props> = ({ countries = [], metadata = {} }) => {
   return (
     <div className={styles.wrapper}>
+      <h3 className={styles.title}>Countries List</h3>
       {countries.map(({ code, name }) => (
         <div key={code} className={styles.item}>
           {name} - {code}
         </div>
       ))}
       <div>
-        <h3>Total: {metadata.totalCount}</h3>
+        <span className={styles.total}>Total: {metadata.totalCount || 0}</span>
       </div>
     </div>
   );

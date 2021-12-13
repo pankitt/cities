@@ -32,4 +32,5 @@ a {
 
   --width-page: 780px;
   --height-header: 60px;
+  --device-wv: 0.8vmin;
 }
