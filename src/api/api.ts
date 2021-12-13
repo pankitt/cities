@@ -29,5 +29,8 @@ const makeRequest = async (url: string, method?: 'get' | 'post', params?: []) =>
   }
 };
 
-export const getCountries = () => makeRequest('/v1/geo/countries?limit=10', 'get');
-export const getCities = () => makeRequest('/v1/geo/cities?limit=10', 'get');
+export const getCountries = () =>
+  makeRequest('https://wft-geo-db.p.rapidapi.com/v1/geo/countries?limit=10', 'get');
+
+export const getCities = () =>
+  makeRequest('https://wft-geo-db.p.rapidapi.com/v1/geo/cities?limit=10', 'get');
