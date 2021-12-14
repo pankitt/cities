@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ICity, IMetaData } from 'types';
 import { getCities } from 'api';
 
-export const useCities = (): readonly [ICity[], IMetaData, boolean] => {
+export const useCities = (): readonly [ICity[] | string, IMetaData, boolean] => {
   const [cities, setCities] = useState<ICity[]>([]);
   const [metaData, setMetaData] = useState<IMetaData>({} as IMetaData);
   const [isLoading, setIsLoading] = useState(true);

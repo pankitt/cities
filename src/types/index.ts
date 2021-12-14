@@ -4,10 +4,6 @@ export interface ICountry {
   name: string;
   wikiDataId: string;
 }
-export type IMetaData = {
-  currentOffset: number;
-  totalCount: number;
-};
 
 export interface ICity {
   id: number;
@@ -22,4 +18,28 @@ export interface ICity {
   latitude: number;
   longitude: number;
   population: number;
+}
+
+export interface Ilink {
+  href: string;
+  rel: 'first' | 'next' | 'last';
+}
+
+export type IMetaData = {
+  currentOffset: number;
+  totalCount: number;
+};
+
+export interface IListGeoDB {
+  links: Array<Ilink>;
+  metadata: IMetaData;
+}
+
+export interface IListCountries extends IListGeoDB {
+  data: Array<ICountry>;
+}
+
+export interface IListCities extends IListGeoDB {
+  message: string;
+  data: Array<ICity>;
 }

@@ -1,3 +1,5 @@
+import { IListCountries, IListCities } from 'types';
+
 const makeRequest = async (url: string, method?: 'get' | 'post', params?: []) => {
   const options = {
     headers: {
@@ -29,8 +31,8 @@ const makeRequest = async (url: string, method?: 'get' | 'post', params?: []) =>
   }
 };
 
-export const getCountries = () =>
+export const getCountries = (): Promise<IListCountries> =>
   makeRequest('https://wft-geo-db.p.rapidapi.com/v1/geo/countries?limit=10', 'get');
 
-export const getCities = () =>
+export const getCities = (): Promise<IListCities> =>
   makeRequest('https://wft-geo-db.p.rapidapi.com/v1/geo/cities?limit=10', 'get');
