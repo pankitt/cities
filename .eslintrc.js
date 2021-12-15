@@ -26,6 +26,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'prettier/prettier': 'error',
     'react/prop-types': 0,
-    '@typescript-eslint/explicit-function-return-type': 'off'
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    'no-console': ['error', { allow: ['warn', 'error'] }]
   }
 };

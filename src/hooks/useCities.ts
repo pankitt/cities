@@ -14,7 +14,6 @@ export const useCities = (): readonly [IListCities, boolean] => {
 
     const fetchData = async () => {
       const result = await getCities();
-      console.log(result);
       if (!cleanup) {
         dispatch(setCitiesAction(result));
         setIsLoading(false);
