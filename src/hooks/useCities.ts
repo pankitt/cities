@@ -3,7 +3,10 @@ import { IListCities } from 'types';
 import { getCities } from 'api';
 import { GeoContext, setCitiesAction } from 'store/geodb';
 
-export const useCities = (): readonly [IListCities, boolean] => {
+export const useCities = (
+  limit?: number,
+  languageCode?: string
+): readonly [IListCities, boolean] => {
   const [cities, setCities] = useState<IListCities>({} as IListCities);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -13,7 +16,10 @@ export const useCities = (): readonly [IListCities, boolean] => {
     let cleanup = false;
 
     const fetchData = async () => {
-      const result = await getCities();
+      const result = await getCities({
+        limit,
+        languageCode
+      });
       if (!cleanup) {
         dispatch(setCitiesAction(result));
         setIsLoading(false);

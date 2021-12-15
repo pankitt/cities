@@ -43,3 +43,8 @@ export interface IListCountries extends IListGeoDB {
 export interface IListCities extends IListGeoDB {
   data: Array<ICity>;
 }
+
+export interface IGeoSearchParams {
+  limit?: number;
+  languageCode?: string;
+}

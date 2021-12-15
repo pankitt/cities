@@ -1,4 +1,4 @@
-import { IListCountries, IListCities } from 'types';
+import { IListCountries, IListCities, IGeoSearchParams } from 'types';
 
 const makeRequest = async (url: string, method?: 'get' | 'post', params?: []) => {
   const options = {
@@ -31,8 +31,30 @@ const makeRequest = async (url: string, method?: 'get' | 'post', params?: []) =>
   }
 };
 
-export const getCountries = (): Promise<IListCountries> =>
-  makeRequest('https://wft-geo-db.p.rapidapi.com/v1/geo/countries?limit=10', 'get');
+export const getCountries = ({
+  limit = 10,
+  languageCode = 'en'
+}: IGeoSearchParams): Promise<IListCountries> => {
+  const formData = {
+    limit: limit.toString(),
+    languageCode
+  };
+  const formattedData = new URLSearchParams(formData).toString();
+  const url = `https://wft-geo-db.p.rapidapi.com/v1/geo/countries?${formattedData}`;
 
-export const getCities = (): Promise<IListCities> =>
-  makeRequest('https://wft-geo-db.p.rapidapi.com/v1/geo/cities?limit=10', 'get');
+  return makeRequest(url, 'get');
+};
+
+export const getCities = ({
+  limit = 10,
+  languageCode = 'en'
+}: IGeoSearchParams): Promise<IListCities> => {
+  const formData = {
+    limit: limit.toString(),
+    languageCode
+  };
+  const formattedData = new URLSearchParams(formData).toString();
+  const url = `https://wft-geo-db.p.rapidapi.com/v1/geo/cities?${formattedData}`;
+
+  return makeRequest(url, 'get');
+};

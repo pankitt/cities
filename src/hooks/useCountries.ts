@@ -3,7 +3,10 @@ import { IListCountries } from 'types';
 import { getCountries } from 'api';
 import { GeoContext, setCountriesAction } from 'store/geodb';
 
-export const useCountries = (): readonly [IListCountries, boolean] => {
+export const useCountries = (
+  limit?: number,
+  languageCode?: string
+): readonly [IListCountries, boolean] => {
   const [countries, setCountries] = useState<IListCountries>({} as IListCountries);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -13,10 +16,12 @@ export const useCountries = (): readonly [IListCountries, boolean] => {
     let cleanup = false;
 
     const fetchData = async () => {
-      const result = await getCountries();
+      const result = await getCountries({
+        limit,
+        languageCode
+      });
       if (!cleanup) {
         dispatch(setCountriesAction(result));
-
         setIsLoading(false);
       }
     };
