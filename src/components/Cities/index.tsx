@@ -8,9 +8,7 @@ const Cities = (): JSX.Element => {
   const [cities, isLoading] = useCities();
 
   // Todo::
-  const loadFetch = (): void => {
-    console.log('Under development');
-  };
+  const loadFetch = (): void => undefined;
 
   // useEffect(() => {
   //   setIsLoadingLoad(isLoading);
