@@ -1,12 +1,15 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
+import { GeoProvider } from 'store/geodb';
 import App from 'components/App';
 import './index.css';
 
 const Root = (): JSX.Element => (
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  <MemoryRouter initialEntries={['/cities']}>
+    <GeoProvider>
+      <App />
+    </GeoProvider>
+  </MemoryRouter>
 );
 
 export default Root;

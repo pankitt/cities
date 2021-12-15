@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react';
-import { ICountry, IMetaData } from 'types';
+import { useContext, useEffect, useState } from 'react';
+import { IListCountries } from 'types';
 import { getCountries } from 'api';
+import { GeoContext, setCountriesAction } from 'store/geodb';
 
-export const useCountries = (): readonly [ICountry[], IMetaData, boolean] => {
-  const [countriesList, setCountriesList] = useState<ICountry[]>([]);
-  const [metaData, setMetaData] = useState<IMetaData>({} as IMetaData);
+export const useCountries = (): readonly [IListCountries, boolean] => {
+  const [countries, setCountries] = useState<IListCountries>({} as IListCountries);
   const [isLoading, setIsLoading] = useState(true);
+
+  const { state, dispatch } = useContext(GeoContext);
 
   useEffect(() => {
     let cleanup = false;
@@ -13,9 +15,9 @@ export const useCountries = (): readonly [ICountry[], IMetaData, boolean] => {
     const fetchData = async () => {
       const result = await getCountries();
       if (!cleanup) {
+        dispatch(setCountriesAction(result));
+
         setIsLoading(false);
-        setCountriesList(result.data);
-        setMetaData(result.metadata);
       }
     };
 
@@ -26,5 +28,9 @@ export const useCountries = (): readonly [ICountry[], IMetaData, boolean] => {
     };
   }, []);
 
-  return [countriesList, metaData, isLoading] as const;
+  useEffect(() => {
+    setCountries(state.countries);
+  }, [state.countries]);
+
+  return [countries, isLoading] as const;
 };

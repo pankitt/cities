@@ -1,23 +1,24 @@
 import React, { FC } from 'react';
-import { ICountry, IMetaData } from 'types';
+import { IListCountries } from 'types';
 import styles from './index.module.css';
 
 interface Props {
-  countries: ICountry[];
-  metadata: IMetaData;
+  countries: IListCountries;
 }
 
-const Country: FC<Props> = ({ countries = [], metadata = {} }) => {
+const Country: FC<Props> = ({ countries = {} }) => {
+  const { data = [], metadata } = countries;
+
   return (
     <div className={styles.wrapper}>
       <h3 className={styles.title}>Countries List</h3>
-      {countries.map(({ code, name }) => (
+      {data.map(({ code, name }) => (
         <div key={code} className={styles.item}>
           {name} - {code}
         </div>
       ))}
       <div>
-        <span className={styles.total}>Total: {metadata.totalCount || 0}</span>
+        <span className={styles.total}>Total: {metadata?.totalCount || 0}</span>
       </div>
     </div>
   );
