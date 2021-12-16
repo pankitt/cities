@@ -9,8 +9,9 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended',
+    'plugin:css-modules/recommended',
     'plugin:jsx-a11y/recommended',
+    'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended'
   ],
   parser: '@typescript-eslint/parser',
@@ -21,12 +22,14 @@ module.exports = {
     ecmaVersion: 13,
     sourceType: 'module'
   },
-  plugins: ['react', '@typescript-eslint', 'prettier'],
+  plugins: ['react', 'css-modules', 'jsx-a11y', '@typescript-eslint', 'prettier'],
   rules: {
     'react/react-in-jsx-scope': 'off',
     'prettier/prettier': 'error',
     'react/prop-types': 0,
     '@typescript-eslint/explicit-function-return-type': 'off',
-    'no-console': ['error', { allow: ['warn', 'error'] }]
+    'no-console': ['error', { allow: ['warn', 'error'] }],
+    'css-modules/no-unused-class': [2, { camelCase: true }],
+    'css-modules/no-undef-class': [2, { camelCase: true }]
   }
 };
