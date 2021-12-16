@@ -5,6 +5,7 @@ import { GeoContext, setCountriesAction } from 'store/geodb';
 
 export const useCountries = (
   limit?: number,
+  offset?: number,
   languageCode?: string
 ): readonly [IListCountries, boolean] => {
   const [countries, setCountries] = useState<IListCountries>({} as IListCountries);
@@ -18,6 +19,7 @@ export const useCountries = (
     const fetchData = async () => {
       const result = await getCountries({
         limit,
+        offset,
         languageCode
       });
       if (!cleanup) {

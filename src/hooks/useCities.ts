@@ -5,6 +5,7 @@ import { GeoContext, setCitiesAction } from 'store/geodb';
 
 export const useCities = (
   limit?: number,
+  offset?: number,
   languageCode?: string
 ): readonly [IListCities, boolean] => {
   const [cities, setCities] = useState<IListCities>({} as IListCities);
@@ -18,6 +19,7 @@ export const useCities = (
     const fetchData = async () => {
       const result = await getCities({
         limit,
+        offset,
         languageCode
       });
       if (!cleanup) {

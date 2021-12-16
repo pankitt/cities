@@ -46,5 +46,6 @@ export interface IListCities extends IListGeoDB {
 
 export interface IGeoSearchParams {
   limit?: number;
+  offset?: number;
   languageCode?: string;
 }
