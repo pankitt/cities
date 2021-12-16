@@ -1,4 +1,5 @@
 .wrapper {
+  text-align: center;
 }
 .item {
   box-shadow: inset 0 -1px 0 0 var(--color-blue-grey);
@@ -14,4 +15,11 @@
 }
 .total {
   font-style: italic;
+  margin-right: 10px;
+}
+.listInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
 }

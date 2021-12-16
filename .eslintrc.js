@@ -11,6 +11,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:css-modules/recommended',
     'plugin:jsx-a11y/recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended'
   ],
@@ -28,7 +29,7 @@ module.exports = {
     'prettier/prettier': 'error',
     'react/prop-types': 0,
     '@typescript-eslint/explicit-function-return-type': 'off',
-    'no-console': ['error', { allow: ['warn', 'error'] }],
+    'no-console': ['warn', { allow: ['warn', 'error'] }],
     'css-modules/no-unused-class': [2, { camelCase: true }],
     'css-modules/no-undef-class': [2, { camelCase: true }]
   }
