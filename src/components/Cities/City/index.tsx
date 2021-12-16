@@ -6,10 +6,10 @@ import styles from './index.module.css';
 
 interface Props {
   cities: IListCities;
-  loadFetch: () => void;
+  loadMore: () => void;
 }
 
-const City: FC<Props> = ({ cities = {}, loadFetch }) => {
+const City: FC<Props> = ({ cities = {}, loadMore }) => {
   const { data = [], links = [], metadata, message = '' } = cities;
   const { offsetCurrent, offsetLast } = geoSearchParams(links);
 
@@ -29,7 +29,7 @@ const City: FC<Props> = ({ cities = {}, loadFetch }) => {
             </span>
           )}
           <div>
-            <Button onClick={loadFetch}>{'Load more'}</Button>
+            <Button onClick={loadMore}>{'Load more'}</Button>
           </div>
         </div>
       ) : (

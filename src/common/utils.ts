@@ -1,8 +1,11 @@
 import { Ilink } from 'types';
 
 export const geoSearchParams = (link: Array<Ilink>) => {
-  const currentLink = new URLSearchParams(link[1]?.href.replace('?', '?&'));
-  const lastLink = new URLSearchParams(link[2]?.href.replace('?', '?&'));
+  const findCurrentQuantity = link.find(({ rel }) => rel === 'next');
+  const findLastQuantity = link.find(({ rel }) => rel === 'last');
+
+  const currentLink = new URLSearchParams(findCurrentQuantity?.href.replace('?', '?&'));
+  const lastLink = new URLSearchParams(findLastQuantity?.href.replace('?', '?&'));
   const limit = currentLink.get('limit');
   const offsetCurrent = currentLink.get('offset');
   const offsetLast = lastLink.get('offset');

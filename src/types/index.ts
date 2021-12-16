@@ -22,7 +22,7 @@ export interface ICity {
 
 export interface Ilink {
   href: string;
-  rel: 'first' | 'next' | 'last';
+  rel: 'first' | 'prev' | 'next' | 'last';
 }
 
 export type IMetaData = {

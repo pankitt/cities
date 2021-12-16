@@ -8,7 +8,7 @@ const Cities = (): JSX.Element => {
   const [cities, isLoading] = useCities();
 
   // Todo::
-  const loadFetch = (): void => undefined;
+  const loadMore = (): void => undefined;
 
   // useEffect(() => {
   //   setIsLoadingLoad(isLoading);
@@ -16,7 +16,7 @@ const Cities = (): JSX.Element => {
 
   return (
     <div className={styles.wrapper}>
-      <div>{isLoading ? <Loader /> : <City cities={cities} loadFetch={loadFetch} />}</div>
+      <div>{isLoading ? <Loader /> : <City cities={cities} loadMore={loadMore} />}</div>
     </div>
   );
 };
