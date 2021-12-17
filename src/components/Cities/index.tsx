@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { geoSearchParams } from 'common/utils';
+import { GeoContext } from 'store/geodb';
 import City from 'components/Cities/City';
 import { useCities } from 'hooks';
 import { Loader } from 'common';
 import styles from './index.module.css';
 
 const Cities = (): JSX.Element => {
-  const [cities, isLoading] = useCities();
+  const { state } = useContext(GeoContext);
+  const { offsetCurrent } = geoSearchParams(state.cities.links);
+  const [currentState, setCurrentState] = useState({
+    offset: offsetCurrent || 0
+  });
+  const [cities, isLoading] = useCities(currentState);
 
-  // Todo::
-  const loadMore = (): void => undefined;
-
-  // useEffect(() => {
-  //   setIsLoadingLoad(isLoading);
-  // }, [cities, isLoading]);
+  const loadMore = (num: number): void =>
+    setCurrentState({
+      offset: num
+    });
 
   return (
     <div className={styles.wrapper}>

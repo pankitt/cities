@@ -30,12 +30,18 @@ export const reducer = (
     case Types.FETCH_COUNTRIES:
       return <InitialStateType>{
         ...state,
-        countries: payload
+        countries: {
+          ...payload,
+          data: [...state.countries.data, ...payload.data]
+        }
       };
     case Types.FETCH_CITIES:
       return <InitialStateType>{
         ...state,
-        cities: payload
+        cities: {
+          ...payload,
+          data: [...state.cities.data, ...payload.data]
+        }
       };
     default:
       return state;

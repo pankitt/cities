@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState } from 'react';
-import { IListCountries } from 'types';
+import { IListCountries, IGeoSearchParams } from 'types';
 import { getCountries } from 'api';
 import { GeoContext, setCountriesAction } from 'store/geodb';
 
-export const useCountries = (
-  limit?: number,
-  offset?: number,
-  languageCode?: string
-): readonly [IListCountries, boolean] => {
+export const useCountries = ({
+  limit,
+  offset,
+  languageCode
+}: IGeoSearchParams): readonly [IListCountries, boolean] => {
   const [countries, setCountries] = useState<IListCountries>({} as IListCountries);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -23,7 +23,9 @@ export const useCountries = (
         languageCode
       });
       if (!cleanup) {
-        dispatch(setCountriesAction(result));
+        if (!result.message) {
+          dispatch(setCountriesAction(result));
+        }
         setIsLoading(false);
       }
     };
@@ -33,7 +35,7 @@ export const useCountries = (
     return () => {
       cleanup = true;
     };
-  }, []);
+  }, [limit, offset, languageCode]);
 
   useEffect(() => {
     setCountries(state.countries);

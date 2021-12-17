@@ -1,6 +1,5 @@
-import { Types } from './types';
 import { IListCountries, IListCities } from 'types';
-import { CountriesActionType, CitiesActionType } from './types';
+import { Types, CountriesActionType, CitiesActionType } from './types';
 
 export const setCountriesAction = (payload: IListCountries): CountriesActionType => ({
   type: Types.FETCH_COUNTRIES,

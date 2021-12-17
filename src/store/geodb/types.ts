@@ -8,6 +8,7 @@ export enum Types {
 export type InitialStateType = {
   countries: IListCountries;
   cities: IListCities;
+  message?: string;
 };
 
 export type CountriesActionType = {

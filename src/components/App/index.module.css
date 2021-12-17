@@ -1,8 +1,5 @@
 .wrapper {
   display: flex;
-  background: var(--color-light-blue);
-  width: 100vw;
-  height: 100vh;
 }
 .main {
   display: flex;

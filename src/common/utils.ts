@@ -6,9 +6,9 @@ export const geoSearchParams = (link: Array<Ilink>) => {
 
   const currentLink = new URLSearchParams(findCurrentQuantity?.href.replace('?', '?&'));
   const lastLink = new URLSearchParams(findLastQuantity?.href.replace('?', '?&'));
-  const limit = currentLink.get('limit');
-  const offsetCurrent = currentLink.get('offset');
-  const offsetLast = lastLink.get('offset');
+  const limit = Number(currentLink.get('limit'));
+  const offsetCurrent = Number(currentLink.get('offset'));
+  const offsetLast = Number(lastLink.get('offset'));
 
   return { limit, offsetCurrent, offsetLast };
 };
