@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { Link } from 'react-router-dom';
 import { IListCountries } from 'types';
 import { geoSearchParams } from 'common/utils';
 import { Button, Loader } from 'common';
@@ -20,9 +21,9 @@ const Country: FC<Props> = ({ countries = {}, loadMore, isLoadingMore }) => {
       <h3 className={styles.title}>Countries List</h3>
       <div className={styles.itemsList}>
         {data.map(({ code, name }) => (
-          <div key={code} className={styles.item}>
+          <Link to={code} key={code} className={styles.item}>
             {name}
-          </div>
+          </Link>
         ))}
       </div>
       {isLoadingMore && <Loader />}

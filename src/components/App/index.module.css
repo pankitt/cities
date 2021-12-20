@@ -1,5 +1,6 @@
 .wrapper {
   display: flex;
+  min-width: 320px;
 }
 .main {
   display: flex;

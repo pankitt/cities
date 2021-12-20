@@ -1,2 +1,14 @@
 .wrapper {
 }
+.globe {
+  width: 200px;
+}
+.link {
+  color: var(--color-blue);
+  font-size: 30px;
+  display: block;
+  cursor: pointer;
+}
+.number {
+  font-size: 20px;
+}

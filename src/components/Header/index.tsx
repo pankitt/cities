@@ -1,5 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { MdOutlineHomeWork } from 'react-icons/md';
+import { AiOutlineSetting } from 'react-icons/ai';
 import { Page } from 'common/constants';
 import styles from './index.module.css';
 
@@ -8,16 +10,24 @@ const Header = (): JSX.Element => (
     <div className={styles.inner}>
       <nav className={styles.nav}>
         <Link to={Page.HOME} className={styles.link}>
-          Home
+          <MdOutlineHomeWork className={styles.icon} />
         </Link>
-        <Link to={Page.COUNTRIES} className={styles.link}>
+        <NavLink
+          to={Page.COUNTRIES}
+          className={({ isActive }) => (isActive ? styles.linkActive : styles.link)}
+        >
           Countries
-        </Link>
-        <Link to={Page.CITIES} className={styles.link}>
+        </NavLink>
+        <NavLink
+          to={Page.CITIES}
+          className={({ isActive }) => (isActive ? styles.linkActive : styles.link)}
+        >
           Cities
-        </Link>
+        </NavLink>
       </nav>
-      <div className={styles.settings}>settings</div>
+      <div className={styles.settings}>
+        <AiOutlineSetting className={styles.iconSetting} />
+      </div>
     </div>
   </div>
 );

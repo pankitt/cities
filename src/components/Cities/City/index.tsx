@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { Link } from 'react-router-dom';
 import { IListCities } from 'types';
 import { geoSearchParams } from 'common/utils';
 import { Button, Loader } from 'common';
@@ -19,10 +20,10 @@ const City: FC<Props> = ({ cities = {}, loadMore, isLoadingMore }) => {
     <div className={styles.wrapper}>
       <h3 className={styles.title}>Cities List</h3>
       <div className={styles.itemsList}>
-        {data.map(({ id, name, country }) => (
-          <div key={id} className={styles.item}>
+        {data.map(({ id, name, country, wikiDataId }) => (
+          <Link key={id} to={wikiDataId} className={styles.item}>
             {name} - {country}
-          </div>
+          </Link>
         ))}
       </div>
       {isLoadingMore && <Loader />}

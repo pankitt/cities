@@ -16,10 +16,37 @@
 .nav {
 }
 .settings {
-
+  display: inherit;
 }
-.link {
+.link, .linkActive  {
   color: var(--color-white);
   cursor: pointer;
+  vertical-align: middle;
   margin-right: 20px;
+}
+.link:hover {
+  text-decoration: underline;
+}
+.linkActive {
+  font-weight: bold;
+  cursor: auto;
+}
+
+.icon, .iconSetting {
+  font-size: 20px;
+}
+.iconSetting {
+  cursor: pointer;
+}
+.iconSetting:hover {
+  animation: Icon-spin forwards .2s linear;
+}
+
+@keyframes Icon-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(30deg);
+  }
 }
