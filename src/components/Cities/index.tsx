@@ -13,7 +13,7 @@ const Cities = (): JSX.Element => {
     offset: offsetCurrent || 0,
     loadMoreCounter: 0
   });
-  const [cities, isLoading] = useCities(currentState);
+  const [cities, isLoading, isLoadingMore] = useCities(currentState);
 
   const loadMore = (num: number): void =>
     setCurrentState(({ loadMoreCounter }) => ({
@@ -23,7 +23,13 @@ const Cities = (): JSX.Element => {
 
   return (
     <div className={styles.wrapper}>
-      <div>{isLoading ? <Loader /> : <City cities={cities} loadMore={loadMore} />}</div>
+      <div>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <City cities={cities} loadMore={loadMore} isLoadingMore={isLoadingMore} />
+        )}
+      </div>
     </div>
   );
 };

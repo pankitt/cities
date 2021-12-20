@@ -8,9 +8,10 @@ export const useCities = ({
   offset,
   languageCode,
   loadMoreCounter
-}: IGeoSearchParams): readonly [IListCities, boolean] => {
+}: IGeoSearchParams): readonly [IListCities, boolean, boolean] => {
   const [cities, setCities] = useState<IListCities>({} as IListCities);
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
 
   const { state, dispatch } = useContext(GeoContext);
 
@@ -18,6 +19,7 @@ export const useCities = ({
     let cleanup = false;
 
     const fetchData = async () => {
+      setIsLoadingMore(true);
       const result = await getCities({
         limit,
         offset,
@@ -30,6 +32,7 @@ export const useCities = ({
 
     fetchData()
       .then(() => setIsLoading(false))
+      .then(() => setIsLoadingMore(false))
       .catch(console.error);
 
     return () => {
@@ -41,5 +44,5 @@ export const useCities = ({
     setCities(state.cities);
   }, [state.cities]);
 
-  return [cities, isLoading] as const;
+  return [cities, isLoading, isLoadingMore] as const;
 };

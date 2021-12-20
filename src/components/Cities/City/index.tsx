@@ -1,15 +1,16 @@
 import React, { FC } from 'react';
 import { IListCities } from 'types';
 import { geoSearchParams } from 'common/utils';
-import { Button } from 'common';
+import { Button, Loader } from 'common';
 import styles from './index.module.css';
 
 interface Props {
   cities: IListCities;
   loadMore: (offsetCurrent: number) => void;
+  isLoadingMore: boolean;
 }
 
-const City: FC<Props> = ({ cities = {}, loadMore }) => {
+const City: FC<Props> = ({ cities = {}, loadMore, isLoadingMore }) => {
   const { data = [], links = [], metadata, message = '' } = cities;
   const { offsetCurrent, offsetLast } = geoSearchParams(links);
   const lastElement = offsetLast < offsetCurrent;
@@ -24,6 +25,7 @@ const City: FC<Props> = ({ cities = {}, loadMore }) => {
           </div>
         ))}
       </div>
+      {isLoadingMore && <Loader />}
       <div className={styles.listInfo}>
         {offsetLast > 0 && (
           <div className={styles.total}>
@@ -33,7 +35,9 @@ const City: FC<Props> = ({ cities = {}, loadMore }) => {
         )}
         {!lastElement && (
           <div>
-            <Button onClick={() => loadMore(offsetCurrent)}>{'Load more'}</Button>
+            <Button disabled={isLoadingMore} onClick={() => loadMore(offsetCurrent)}>
+              {'Load more'}
+            </Button>
           </div>
         )}
       </div>
