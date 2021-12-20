@@ -12,6 +12,7 @@ interface Props {
 const Country: FC<Props> = ({ countries = {}, loadMore }) => {
   const { data = [], links = [], metadata } = countries;
   const { offsetCurrent, offsetLast } = geoSearchParams(links);
+  const lastElement = offsetLast < offsetCurrent;
 
   return (
     <div className={styles.wrapper}>
@@ -25,13 +26,16 @@ const Country: FC<Props> = ({ countries = {}, loadMore }) => {
       </div>
       <div className={styles.listInfo}>
         {offsetLast > 0 && (
-          <span className={styles.total}>
-            Quantity: <b>{offsetCurrent}</b>/{metadata?.totalCount}
-          </span>
+          <div className={styles.total}>
+            <span className={styles.quantity}>Quantity:</span>
+            <b>{!lastElement ? offsetCurrent : metadata?.totalCount}</b>/{metadata?.totalCount}
+          </div>
         )}
-        <div>
-          <Button onClick={() => loadMore(offsetCurrent)}>{'Load more'}</Button>
-        </div>
+        {!lastElement && (
+          <div>
+            <Button onClick={() => loadMore(offsetCurrent)}>{'Load more'}</Button>
+          </div>
+        )}
       </div>
     </div>
   );
