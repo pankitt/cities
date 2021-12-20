@@ -10,14 +10,16 @@ const Cities = (): JSX.Element => {
   const { state } = useContext(GeoContext);
   const { offsetCurrent } = geoSearchParams(state.countries.links);
   const [currentState, setCurrentState] = useState({
-    offset: offsetCurrent || 0
+    offset: offsetCurrent || 0,
+    loadMoreCounter: 0
   });
   const [countries, isLoading] = useCountries(currentState);
 
   const loadMore = (num: number): void =>
-    setCurrentState({
-      offset: num
-    });
+    setCurrentState(({ loadMoreCounter }) => ({
+      offset: num,
+      loadMoreCounter: ++loadMoreCounter
+    }));
 
   return (
     <div className={styles.wrapper}>

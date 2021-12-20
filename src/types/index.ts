@@ -48,4 +48,5 @@ export interface IGeoSearchParams {
   limit?: number;
   offset?: number;
   languageCode?: string;
+  loadMoreCounter?: number;
 }

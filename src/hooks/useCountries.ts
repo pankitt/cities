@@ -6,7 +6,8 @@ import { GeoContext, setCountriesAction } from 'store/geodb';
 export const useCountries = ({
   limit,
   offset,
-  languageCode
+  languageCode,
+  loadMoreCounter
 }: IGeoSearchParams): readonly [IListCountries, boolean] => {
   const [countries, setCountries] = useState<IListCountries>({} as IListCountries);
   const [isLoading, setIsLoading] = useState(true);
@@ -34,7 +35,7 @@ export const useCountries = ({
     return () => {
       cleanup = true;
     };
-  }, [limit, offset, languageCode]);
+  }, [limit, offset, languageCode, loadMoreCounter]);
 
   useEffect(() => {
     setCountries(state.countries);
