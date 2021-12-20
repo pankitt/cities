@@ -10,7 +10,7 @@ interface Props {
 }
 
 const Country: FC<Props> = ({ countries = {}, loadMore }) => {
-  const { data = [], links = [], metadata } = countries;
+  const { data = [], links = [], metadata, message = '' } = countries;
   const { offsetCurrent, offsetLast } = geoSearchParams(links);
   const lastElement = offsetLast < offsetCurrent;
 
@@ -37,6 +37,7 @@ const Country: FC<Props> = ({ countries = {}, loadMore }) => {
           </div>
         )}
       </div>
+      {message && <div className={styles.message}>{message}</div>}
     </div>
   );
 };

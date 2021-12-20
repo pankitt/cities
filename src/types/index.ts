@@ -33,7 +33,7 @@ export type IMetaData = {
 export interface IListGeoDB {
   links: Array<Ilink>;
   metadata: IMetaData;
-  message?: string;
+  message: string;
 }
 
 export interface IListCountries extends IListGeoDB {

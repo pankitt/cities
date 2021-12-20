@@ -31,3 +31,9 @@
 .quantity {
   margin-right: 3px;
 }
+.message {
+  font-size: 12px;
+  color: var(--color-red);
+  text-align: center;
+  margin-top: 10px;
+}

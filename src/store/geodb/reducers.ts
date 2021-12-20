@@ -8,7 +8,8 @@ export const initialState: InitialStateType = {
     metadata: {
       currentOffset: 0,
       totalCount: 0
-    }
+    },
+    message: ''
   },
   cities: {
     data: [],
@@ -16,7 +17,8 @@ export const initialState: InitialStateType = {
     metadata: {
       currentOffset: 0,
       totalCount: 0
-    }
+    },
+    message: ''
   }
 };
 
@@ -30,18 +32,30 @@ export const reducer = (
     case Types.FETCH_COUNTRIES:
       return <InitialStateType>{
         ...state,
-        countries: {
-          ...payload,
-          data: [...state.countries.data, ...payload.data]
-        }
+        countries: payload?.data
+          ? {
+              ...payload,
+              data: [...state.countries.data, ...payload.data],
+              message: ''
+            }
+          : {
+              ...state.countries,
+              message: payload.message
+            }
       };
     case Types.FETCH_CITIES:
       return <InitialStateType>{
         ...state,
-        cities: {
-          ...payload,
-          data: [...state.cities.data, ...payload.data]
-        }
+        cities: payload?.data
+          ? {
+              ...payload,
+              data: [...state.cities.data, ...payload.data],
+              message: ''
+            }
+          : {
+              ...state.cities,
+              message: payload.message
+            }
       };
     default:
       return state;

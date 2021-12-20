@@ -23,14 +23,13 @@ export const useCities = ({
         languageCode
       });
       if (!cleanup) {
-        if (!result.message) {
-          dispatch(setCitiesAction(result));
-        }
-        setIsLoading(false);
+        dispatch(setCitiesAction(result));
       }
     };
 
-    fetchData().catch(console.error);
+    fetchData()
+      .then(() => setIsLoading(false))
+      .catch(console.error);
 
     return () => {
       cleanup = true;

@@ -23,14 +23,13 @@ export const useCountries = ({
         languageCode
       });
       if (!cleanup) {
-        if (!result.message) {
-          dispatch(setCountriesAction(result));
-        }
-        setIsLoading(false);
+        dispatch(setCountriesAction(result));
       }
     };
 
-    fetchData().catch(console.error);
+    fetchData()
+      .then(() => setIsLoading(false))
+      .catch(console.error);
 
     return () => {
       cleanup = true;
