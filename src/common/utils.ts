@@ -1,6 +1,6 @@
-import { Ilink } from 'types';
+import { ILink } from 'types';
 
-export const geoSearchParams = (link: Array<Ilink>) => {
+export const geoSearchParams = (link: Array<ILink>) => {
   const findCurrentQuantity = link.find(({ rel }) => rel === 'next');
   const findLastQuantity = link.find(({ rel }) => rel === 'last');
 

@@ -20,7 +20,7 @@ export interface ICity {
   population: number;
 }
 
-export interface Ilink {
+export interface ILink {
   href: string;
   rel: 'first' | 'prev' | 'next' | 'last';
 }
@@ -31,7 +31,7 @@ export type IMetaData = {
 };
 
 export interface IListGeoDB {
-  links: Array<Ilink>;
+  links: Array<ILink>;
   metadata: IMetaData;
   message: string;
 }
@@ -46,10 +46,47 @@ export interface IGeoParams {
   limit?: number | undefined;
   offset?: number | undefined;
   languageCode?: string;
+  detailsCode?: string;
 }
 export interface IGeoParamsApi extends IGeoParams {
   name: string;
 }
 export interface IGeoParamsHook extends IGeoParams {
   loadMoreCounter: number;
+}
+
+export interface ICountryDetails {
+  capital: string | null;
+  code: string;
+  callingCode: string;
+  currencyCodes: Array<string>;
+  flagImageUri: string;
+  name: string;
+  numRegions: number;
+  wikiDataId: string;
+}
+export interface ICountryDetailsFetch {
+  data: ICountryDetails;
+}
+
+export interface ICityDetails {
+  id: number;
+  wikiDataId: string;
+  type: string;
+  city: string;
+  name: string;
+  country: string;
+  countryCode: string;
+  region: string;
+  regionCode: string;
+  elevationMeters: number;
+  latitude: number;
+  longitude: number;
+  population: number;
+  timezone: string;
+  distance: null;
+  deleted: boolean;
+}
+export interface ICityDetailsFetch {
+  data: ICityDetails;
 }

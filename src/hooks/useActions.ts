@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-
+// TODO:
 const applyMiddleware = (dispatch: any) => (action: any) => {
   if (typeof action === 'function') {
     return action(dispatch);
