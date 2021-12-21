@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
-import { ICityDetails, IGeoParams } from 'types';
+import { ICityDetailsFetch, IGeoParamsHook } from 'types';
 import { getCityDetails } from 'api';
 
 export const useCityDetails = ({
   languageCode,
-  detailsCode
-}: IGeoParams): readonly [ICityDetails, boolean] => {
-  const [city, setCity] = useState<ICityDetails>({} as ICityDetails);
+  detailsCode,
+  loadMoreCounter
+}: IGeoParamsHook): readonly [ICityDetailsFetch, boolean] => {
+  const [city, setCity] = useState<ICityDetailsFetch>({} as ICityDetailsFetch);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -18,7 +19,7 @@ export const useCityDetails = ({
         detailsCode
       });
       if (!cleanup) {
-        setCity(result.data);
+        setCity(result);
       }
     };
 
@@ -29,7 +30,7 @@ export const useCityDetails = ({
     return () => {
       cleanup = true;
     };
-  }, [languageCode]);
+  }, [languageCode, detailsCode, loadMoreCounter]);
 
   return [city, isLoading] as const;
 };

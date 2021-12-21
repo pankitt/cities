@@ -67,6 +67,7 @@ export interface ICountryDetails {
 }
 export interface ICountryDetailsFetch {
   data: ICountryDetails;
+  message?: string;
 }
 
 export interface ICityDetails {
@@ -89,4 +90,5 @@ export interface ICityDetails {
 }
 export interface ICityDetailsFetch {
   data: ICityDetails;
+  message?: string;
 }

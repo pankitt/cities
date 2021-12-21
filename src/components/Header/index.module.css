@@ -30,8 +30,7 @@
   text-decoration: underline;
 }
 .linkActive {
-  font-weight: bold;
-  cursor: auto;
+  text-decoration: underline;
 }
 
 .icon, .iconSetting {
