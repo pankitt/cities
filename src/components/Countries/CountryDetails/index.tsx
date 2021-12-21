@@ -89,6 +89,18 @@ const CountryDetails = (): JSX.Element => {
                 </a>
               </div>
             )}
+            {name && (
+              <div className={styles.infoItem}>
+                <span className={styles.infoItemTitle}>Google Map:</span>
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${name}`}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  link
+                </a>
+              </div>
+            )}
             {message && (
               <div>
                 <Button onClick={loadMore}>{'Load Again'}</Button>
