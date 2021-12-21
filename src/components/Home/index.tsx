@@ -16,7 +16,7 @@ const Home = (): JSX.Element => {
         </li>
         <li>
           <Link to={Page.CITIES} className={styles.link}>
-            Cities <span className={styles.number}>(521246)</span>
+            Cities <span className={styles.number}>(521k)</span>
           </Link>
         </li>
       </ul>

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { IListCities, IGeoSearchParams } from 'types';
+import { IListCities, IGeoParamsHook } from 'types';
 import { getCities } from 'api';
 import { GeoContext, setCitiesAction } from 'store/geodb';
 
@@ -8,7 +8,7 @@ export const useCities = ({
   offset,
   languageCode,
   loadMoreCounter
-}: IGeoSearchParams): readonly [IListCities, boolean, boolean] => {
+}: IGeoParamsHook): readonly [IListCities, boolean, boolean] => {
   const [cities, setCities] = useState<IListCities>({} as IListCities);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingMore, setIsLoadingMore] = useState(false);

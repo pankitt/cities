@@ -35,18 +35,21 @@ export interface IListGeoDB {
   metadata: IMetaData;
   message: string;
 }
-
 export interface IListCountries extends IListGeoDB {
   data: Array<ICountry>;
 }
-
 export interface IListCities extends IListGeoDB {
   data: Array<ICity>;
 }
 
-export interface IGeoSearchParams {
-  limit?: number;
-  offset?: number;
+export interface IGeoParams {
+  limit?: number | undefined;
+  offset?: number | undefined;
   languageCode?: string;
-  loadMoreCounter?: number;
+}
+export interface IGeoParamsApi extends IGeoParams {
+  name: string;
+}
+export interface IGeoParamsHook extends IGeoParams {
+  loadMoreCounter: number;
 }

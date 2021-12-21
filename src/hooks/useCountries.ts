@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { IListCountries, IGeoSearchParams } from 'types';
+import { IListCountries, IGeoParamsHook } from 'types';
 import { getCountries } from 'api';
 import { GeoContext, setCountriesAction } from 'store/geodb';
 
@@ -8,7 +8,7 @@ export const useCountries = ({
   offset,
   languageCode,
   loadMoreCounter
-}: IGeoSearchParams): readonly [IListCountries, boolean, boolean] => {
+}: IGeoParamsHook): readonly [IListCountries, boolean, boolean] => {
   const [countries, setCountries] = useState<IListCountries>({} as IListCountries);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingMore, setIsLoadingMore] = useState(false);

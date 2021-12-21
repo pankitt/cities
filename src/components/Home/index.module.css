@@ -2,12 +2,16 @@
 }
 .globe {
   width: 200px;
+  padding: 15px;
 }
 .link {
   color: var(--color-blue);
   font-size: 30px;
   display: block;
   cursor: pointer;
+}
+.link:hover {
+  color: var(--color-dark-blue);
 }
 .number {
   font-size: 20px;
