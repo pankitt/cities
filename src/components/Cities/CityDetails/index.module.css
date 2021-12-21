@@ -1,2 +1,26 @@
 .wrapper {
 }
+.title {
+  font-size: calc(22px + var(--device-wv));
+}
+.info {
+  border: 1px solid var(--color-light-blue);
+  border-radius: 2px;
+  padding: 10px;
+  font-size: 14px;
+}
+.infoItem {
+  border-bottom: 1px solid var(--color-light-blue);
+  margin-bottom: 2px;
+  padding: 2px;
+}
+.infoItemTitle {
+  display: inline-block;
+  min-width: 100px;
+}
+.message {
+  font-size: 12px;
+  color: var(--color-red);
+  text-align: center;
+  margin-top: 10px;
+}
