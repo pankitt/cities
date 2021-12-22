@@ -34,7 +34,7 @@ const City: FC<Props> = ({ cities = {}, loadMore, isLoadingMore }) => {
             <b>{!lastElement ? offsetCurrent : metadata?.totalCount}</b>/{metadata?.totalCount}
           </div>
         )}
-        {!lastElement && (
+        {offsetLast > 0 && !lastElement && (
           <div>
             <Button disabled={isLoadingMore} onClick={() => loadMore(offsetCurrent)}>
               {'Load more'}
