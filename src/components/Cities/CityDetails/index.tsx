@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { SiWikidata, SiWikipedia, SiGooglemaps } from 'react-icons/si';
 import { useCityDetails } from 'hooks';
 import { Button, Loader } from 'common';
 import styles from './index.module.css';
@@ -94,7 +95,15 @@ const CityDetails = (): JSX.Element => {
                   rel="noreferrer"
                   target="_blank"
                 >
-                  link
+                  <SiWikidata className={styles.iconWikiData} />
+                </a>
+              </div>
+            )}
+            {name && (
+              <div className={styles.infoItem}>
+                <span className={styles.infoItemTitle}>Wikipedia:</span>
+                <a href={`https://en.wikipedia.org/wiki/${name}`} rel="noreferrer" target="_blank">
+                  <SiWikipedia className={styles.iconWiki} />
                 </a>
               </div>
             )}
@@ -106,7 +115,7 @@ const CityDetails = (): JSX.Element => {
                   rel="noreferrer"
                   target="_blank"
                 >
-                  link
+                  <SiGooglemaps className={styles.iconGoogleMaps} />
                 </a>
               </div>
             )}

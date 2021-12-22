@@ -17,11 +17,11 @@
 }
 .infoItem {
   border-bottom: 1px solid var(--color-light-blue);
-  margin-bottom: 2px;
-  padding: 2px;
+  padding: 5px;
 }
 .infoItemTitle {
   display: inline-block;
+  color: var(--color-black-light);
   min-width: 100px;
 }
 .message {
@@ -29,4 +29,43 @@
   color: var(--color-red);
   text-align: center;
   margin-top: 10px;
+}
+
+.iconWikiData, .iconWiki, .iconGoogleMaps, .iconPhone, .iconCurrency {
+  position: relative;
+  vertical-align: middle;
+  margin: -5px 0;
+}
+.iconWikiData {
+  font-size: 25px;
+  top: -2px;
+}
+.iconWiki {
+  font-size: 22px;
+  top: -2px;
+  left: 1px;
+}
+.iconGoogleMaps {
+  font-size: 20px;
+  top: -3px;
+  left: 3px;
+}
+.iconPhone {
+  font-size: 20px;
+  position: relative;
+  top: -2px;
+}
+
+.currencyCode {
+  font-size: 11px;
+  border: 1px solid var(--color-dark-blue);
+  border-radius: 3px;
+  padding: 1px 5px 1px 0;
+  margin-right: 10px;
+}
+.iconCurrency {
+  font-size: 22px;
+  top: -2px;
+  left: -1px;
+  margin-left: -8px;
 }
