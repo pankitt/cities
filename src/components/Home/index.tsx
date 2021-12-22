@@ -8,7 +8,7 @@ const Home = (): JSX.Element => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.globe}>{svgIcon.globe}</div>
-      <ul>
+      <ul className={styles.list}>
         <li>
           <Link to={Page.COUNTRIES} className={styles.link}>
             Countries <span className={styles.number}>(199)</span>

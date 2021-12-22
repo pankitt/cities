@@ -4,9 +4,12 @@
   width: 200px;
   padding: 15px;
 }
+.list {
+  color: var(--color-blue);
+}
 .link {
   color: var(--color-blue);
-  font-size: 30px;
+  font-size: 28px;
   display: block;
   cursor: pointer;
 }
