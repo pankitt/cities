@@ -40,7 +40,7 @@ export const useCountries = ({
     return () => {
       cleanup = true;
     };
-  }, [limit, offset, languageCode, loadMoreCounter]);
+  }, [limit, offset, languageCode, namePrefix, loadMoreCounter]);
 
   useEffect(() => {
     setCountries(state.countries);

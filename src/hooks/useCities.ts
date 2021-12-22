@@ -40,7 +40,7 @@ export const useCities = ({
     return () => {
       cleanup = true;
     };
-  }, [limit, offset, languageCode, loadMoreCounter]);
+  }, [limit, offset, languageCode, namePrefix, loadMoreCounter]);
 
   useEffect(() => {
     setCities(state.cities);

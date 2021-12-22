@@ -7,6 +7,7 @@
   color: var(--color-white);
   height: var(--height-header);
   padding: 0 20px;
+  z-index: 100;
 }
 .inner {
   display: flex;

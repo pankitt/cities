@@ -93,3 +93,7 @@ export interface ICityDetailsFetch {
   data: ICityDetails;
   message?: string;
 }
+
+export type ISearchData = {
+  name: string;
+};
