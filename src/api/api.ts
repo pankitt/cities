@@ -56,16 +56,18 @@ const makeGeoParams = ({ name, detailsCode, ...props }: IGeoParamsApi) => {
 export const getCountries = ({
   limit = 10,
   offset = 0,
-  languageCode = 'en'
+  languageCode = 'en',
+  namePrefix = ''
 }: IGeoParams): Promise<IListCountries> =>
-  makeGeoParams({ name: 'countries', limit, offset, languageCode });
+  makeGeoParams({ name: 'countries', limit, offset, languageCode, namePrefix });
 
 export const getCities = ({
   limit = 10,
   offset = 0,
-  languageCode = 'en'
+  languageCode = 'en',
+  namePrefix = ''
 }: IGeoParams): Promise<IListCities> =>
-  makeGeoParams({ name: 'cities', limit, offset, languageCode });
+  makeGeoParams({ name: 'cities', limit, offset, languageCode, namePrefix });
 
 export const getCountryDetails = ({
   languageCode = 'en',

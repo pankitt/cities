@@ -47,6 +47,7 @@ export interface IGeoParams {
   offset?: number | undefined;
   languageCode?: string;
   detailsCode?: string;
+  namePrefix?: string;
 }
 export interface IGeoParamsApi extends IGeoParams {
   name: string;

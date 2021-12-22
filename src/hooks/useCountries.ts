@@ -7,6 +7,7 @@ export const useCountries = ({
   limit,
   offset,
   languageCode,
+  namePrefix,
   loadMoreCounter
 }: IGeoParamsHook): readonly [IListCountries, boolean, boolean] => {
   const [countries, setCountries] = useState<IListCountries>({} as IListCountries);
@@ -23,7 +24,8 @@ export const useCountries = ({
       const result = await getCountries({
         limit,
         offset,
-        languageCode
+        languageCode,
+        namePrefix
       });
       if (!cleanup) {
         dispatch(setCountriesAction(result));

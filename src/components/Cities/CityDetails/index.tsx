@@ -31,9 +31,9 @@ const CityDetails = (): JSX.Element => {
     data;
 
   const loadMore = (): void =>
-    setCurrentState(({ loadMoreCounter }) => ({
-      detailsCode: id,
-      loadMoreCounter: ++loadMoreCounter
+    setCurrentState((prevState) => ({
+      ...prevState,
+      loadMoreCounter: ++prevState.loadMoreCounter
     }));
 
   return (
