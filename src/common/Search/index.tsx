@@ -18,7 +18,11 @@ const Search: FC<Props> = ({ onSubmit }) => {
   return (
     <div className={styles.wrapper}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input {...register('name', { required: true })} className={styles.input} />
+        <input
+          {...register('name', { required: true })}
+          className={styles.input}
+          autoComplete="off"
+        />
         <button type="submit" className={styles.submit}>
           <AiOutlineFileSearch className={styles.icon} />
         </button>

@@ -12,14 +12,14 @@
   border-radius: 4px;
   padding: 5px 10px;
   margin-bottom: 1px;
-  font-size: calc(10px + var(--device-wv));
+  font-size: calc(14px + var(--device-wv));
 }
 .item:hover {
   background-color: var(--color-light-blue);
 }
 .title {
   text-align: center;
-  font-size: calc(16px + var(--device-wv));
+  font-size: calc(18px + var(--device-wv));
 }
 .total {
   font-style: italic;
