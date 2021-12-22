@@ -1,7 +1,5 @@
-import React, { useContext, useState } from 'react';
-import { geoSearchParams } from 'common/utils';
+import React, { useState } from 'react';
 import { ISearchData } from 'types';
-import { GeoContext } from 'store/geodb';
 import Country from 'components/Countries/Country';
 import Search from 'common/Search';
 import { useCountries } from 'hooks';
@@ -9,11 +7,9 @@ import { Loader } from 'common';
 import styles from './index.module.css';
 
 const Countries = (): JSX.Element => {
-  const { state } = useContext(GeoContext);
-  const { offsetCurrent } = geoSearchParams(state.countries.links);
   const [currentState, setCurrentState] = useState({
     namePrefix: '',
-    offset: offsetCurrent || 0,
+    offset: 0,
     loadMoreCounter: 0
   });
   const [countries, isLoading, isLoadingMore] = useCountries(currentState);
@@ -27,6 +23,7 @@ const Countries = (): JSX.Element => {
   const onSearch = (data: ISearchData) =>
     setCurrentState((prevState) => ({
       ...prevState,
+      offset: 0,
       namePrefix: data.name
     }));
 

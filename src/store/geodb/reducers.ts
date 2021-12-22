@@ -35,7 +35,9 @@ export const reducer = (
         countries: payload?.data
           ? {
               ...payload,
-              data: [...state.countries.data, ...payload.data],
+              data: payload.metadata.currentOffset
+                ? [...state.countries.data, ...payload.data]
+                : payload.data,
               message: ''
             }
           : {
@@ -49,7 +51,9 @@ export const reducer = (
         cities: payload?.data
           ? {
               ...payload,
-              data: [...state.cities.data, ...payload.data],
+              data: payload.metadata.currentOffset
+                ? [...state.cities.data, ...payload.data]
+                : payload.data,
               message: ''
             }
           : {
