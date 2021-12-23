@@ -4,6 +4,7 @@ import { SiWikidata, SiWikipedia, SiGooglemaps } from 'react-icons/si';
 import { BsCurrencyExchange, BsPhoneVibrate } from 'react-icons/bs';
 import { useCountryDetails } from 'hooks';
 import { Button, Loader } from 'common';
+import Regions from 'components/Regions';
 import styles from './index.module.css';
 
 const CountryDetails = (): JSX.Element => {
@@ -124,6 +125,7 @@ const CountryDetails = (): JSX.Element => {
           </div>
         </div>
       )}
+      {numRegions > 0 && code && <Regions code={code} />}
     </div>
   );
 };

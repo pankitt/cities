@@ -5,6 +5,14 @@ export interface ICountry {
   wikiDataId: string;
 }
 
+export interface IRegion {
+  name: string;
+  countryCode: string;
+  fipsCode: string;
+  isoCode: string;
+  wikiDataId: string;
+}
+
 export interface ICity {
   id: number;
   wikiDataId: string;
@@ -37,6 +45,9 @@ export interface IListGeoDB {
 }
 export interface IListCountries extends IListGeoDB {
   data: Array<ICountry>;
+}
+export interface IListRegions extends IListGeoDB {
+  data: Array<IRegion>;
 }
 export interface IListCities extends IListGeoDB {
   data: Array<ICity>;

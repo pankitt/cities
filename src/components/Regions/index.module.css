@@ -1,0 +1,7 @@
+.wrapper {
+  border: solid 1px var(--color-blue-line);
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 14px;
+  margin-top: 20px;
+}

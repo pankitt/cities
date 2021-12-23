@@ -7,7 +7,7 @@
   background-color: var(--color-white);
   width: var(--width-page);
   box-shadow: inset 0 -1px 0 0 var(--color-blue-grey);
-  border: solid 1px rgba(183, 210, 229, 0.8);
+  border: solid 1px var(--color-blue-line);
   border-radius: 4px;
   height: 100%;
   padding: 20px 10px;

@@ -28,6 +28,7 @@ a {
   --color-black: #000;
   --color-black-light: #666;
   --color-blue: #0079c4;
+  --color-blue-line: rgba(183, 210, 229, 0.8);
   --color-light-blue: #ecf5fd;
   --color-dark-blue: #2c405a;
   --color-blue-grey: #7e95a7;

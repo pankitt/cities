@@ -1,25 +1,20 @@
 import { Types } from './types';
 import { InitialStateType, Actions } from './types';
 
-export const initialState: InitialStateType = {
-  countries: {
-    data: [],
-    links: [],
-    metadata: {
-      currentOffset: 0,
-      totalCount: 0
-    },
-    message: ''
+const data = {
+  data: [],
+  links: [],
+  metadata: {
+    currentOffset: 0,
+    totalCount: 0
   },
-  cities: {
-    data: [],
-    links: [],
-    metadata: {
-      currentOffset: 0,
-      totalCount: 0
-    },
-    message: ''
-  }
+  message: ''
+};
+
+export const initialState: InitialStateType = {
+  countries: data,
+  regions: data,
+  cities: data
 };
 
 export const reducer = (
@@ -42,6 +37,22 @@ export const reducer = (
             }
           : {
               ...state.countries,
+              message: payload.message
+            }
+      };
+    case Types.FETCH_REGIONS:
+      return <InitialStateType>{
+        ...state,
+        regions: payload?.data
+          ? {
+              ...payload,
+              data: payload.metadata.currentOffset
+                ? [...state.regions.data, ...payload.data]
+                : payload.data,
+              message: ''
+            }
+          : {
+              ...state.regions,
               message: payload.message
             }
       };

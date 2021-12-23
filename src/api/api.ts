@@ -1,5 +1,6 @@
 import {
   IListCountries,
+  IListRegions,
   IListCities,
   ICountryDetailsFetch,
   ICityDetailsFetch,
@@ -38,7 +39,7 @@ const makeRequest = async (url: string, method?: 'get' | 'post', params?: []) =>
   }
 };
 
-const makeGeoParams = ({ name, detailsCode, ...props }: IGeoParamsApi) => {
+const makeGeoParams = ({ name, ...props }: IGeoParamsApi) => {
   const stringifyPayload = Object.entries(props).reduce<Record<string, string>>(
     (acc, [key, value]) => {
       acc[key] = String(value);
@@ -46,9 +47,8 @@ const makeGeoParams = ({ name, detailsCode, ...props }: IGeoParamsApi) => {
     },
     {}
   );
-  const isDetailsCode = detailsCode ? `/${detailsCode}` : '';
   const formattedData = new URLSearchParams(stringifyPayload).toString();
-  const url = `https://wft-geo-db.p.rapidapi.com/v1/geo/${name}${isDetailsCode}?${formattedData}`;
+  const url = `https://wft-geo-db.p.rapidapi.com/v1/geo/${name}?${formattedData}`;
 
   return makeRequest(url, 'get');
 };
@@ -73,10 +73,25 @@ export const getCountryDetails = ({
   languageCode = 'en',
   detailsCode = ''
 }: IGeoParams): Promise<ICountryDetailsFetch> =>
-  makeGeoParams({ name: 'countries', detailsCode, languageCode });
+  makeGeoParams({ name: `countries/${detailsCode}`, languageCode });
 
 export const getCityDetails = ({
   languageCode = 'en',
   detailsCode = ''
 }: IGeoParams): Promise<ICityDetailsFetch> =>
-  makeGeoParams({ name: 'cities', detailsCode, languageCode });
+  makeGeoParams({ name: `cities/${detailsCode}`, languageCode });
+
+export const getRegions = ({
+  limit = 10,
+  offset = 0,
+  languageCode = 'en',
+  namePrefix = '',
+  detailsCode = ''
+}: IGeoParams): Promise<IListRegions> =>
+  makeGeoParams({
+    name: `countries/${detailsCode}/regions`,
+    limit,
+    offset,
+    languageCode,
+    namePrefix
+  });
