@@ -23,7 +23,7 @@ const City: FC<Props> = ({ cities = {}, loadMore, isLoadingMore }) => {
       <div className={styles.itemsList}>
         {data.map(({ id, name, country, wikiDataId }) => (
           <Link key={id} to={wikiDataId} className={styles.item}>
-            {name} - {country}
+            {name} <span className={styles.country}>{country}</span>
           </Link>
         ))}
       </div>
