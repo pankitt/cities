@@ -14,7 +14,8 @@ interface Props {
 const City: FC<Props> = ({ cities = {}, loadMore, isLoadingMore }) => {
   const { data = [], links = [], metadata, message = '' } = cities;
   const { offsetCurrent, offsetLast } = geoSearchParams(links);
-  const lastElement = offsetLast < offsetCurrent;
+  const lastElement = offsetLast <= offsetCurrent;
+  const isShowButton = (lastElement && message.length > 0) || !lastElement;
 
   return (
     <div className={styles.wrapper}>
@@ -34,7 +35,7 @@ const City: FC<Props> = ({ cities = {}, loadMore, isLoadingMore }) => {
             <b>{!lastElement ? offsetCurrent : metadata?.totalCount}</b>/{metadata?.totalCount}
           </div>
         )}
-        {offsetLast > 0 && !lastElement && (
+        {isShowButton && (
           <div>
             <Button disabled={isLoadingMore} onClick={() => loadMore(offsetCurrent)}>
               {'Load more'}
