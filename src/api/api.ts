@@ -13,7 +13,8 @@ const makeRequest = async (url: string, method?: 'get' | 'post', params?: []) =>
     headers: {
       'content-type': 'application/json',
       'x-rapidapi-host': 'wft-geo-db.p.rapidapi.com',
-      'x-rapidapi-key': '22c953082emsha514076bb452b74p1b64aejsn1dfc41e5ca42'
+      // 'x-rapidapi-key': '22c953082emsha514076bb452b74p1b64aejsn1dfc41e5ca42'
+      'x-rapidapi-key': '6ae38e1b34msh300fa7b61bcf01ep127c1ejsn5a8004285f5d'
     },
     method,
     body:
