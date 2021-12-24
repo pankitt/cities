@@ -3,7 +3,6 @@
 .title {
   text-align: center;
   font-size: calc(13px + var(--device-wv));
-  margin: 0 0 10px;
 }
 .itemsList {
   display: flex;
