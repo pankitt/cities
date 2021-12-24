@@ -20,9 +20,9 @@ const Region: FC<Props> = ({ regions = {}, loadMore, isLoadingMore }) => {
     <div className={styles.wrapper}>
       <h3 className={styles.title}>Regions</h3>
       <div className={styles.itemsList}>
-        {data.map(({ wikiDataId, name }) => (
+        {data.map(({ wikiDataId, name }, index: number) => (
           <div key={wikiDataId} className={styles.item}>
-            {name}
+            <span className={styles.index}>{++index}.</span> {name}
           </div>
         ))}
       </div>

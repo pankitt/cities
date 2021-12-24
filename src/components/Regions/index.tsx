@@ -35,6 +35,7 @@ const Regions: FC<Props> = ({ code = '' }) => {
   useEffect(() => {
     setCurrentState((prevState) => ({
       ...prevState,
+      offset: 0,
       detailsCode: code
     }));
   }, [code]);

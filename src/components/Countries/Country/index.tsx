@@ -21,9 +21,9 @@ const Country: FC<Props> = ({ countries = {}, loadMore, isLoadingMore }) => {
     <div className={styles.wrapper}>
       <h3 className={styles.title}>Countries List</h3>
       <div className={styles.itemsList}>
-        {data.map(({ code, name }) => (
+        {data.map(({ code, name }, index: number) => (
           <Link to={code} key={code} className={styles.item}>
-            {name}
+            <span className={styles.index}>{++index}.</span> {name}
           </Link>
         ))}
       </div>

@@ -27,6 +27,7 @@ export const reducer = (
     case Types.FETCH_COUNTRIES:
       return <InitialStateType>{
         ...state,
+        regions: data,
         countries: payload?.data
           ? {
               ...payload,
