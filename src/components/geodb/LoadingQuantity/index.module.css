@@ -1,0 +1,19 @@
+.listInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+.total {
+  font-style: italic;
+  margin-right: 10px;
+}
+.quantity {
+  margin-right: 3px;
+}
+.message {
+  font-size: 12px;
+  color: var(--color-red);
+  text-align: center;
+  margin-top: 10px;
+}

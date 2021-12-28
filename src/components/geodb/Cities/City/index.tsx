@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { IListCities } from 'types';
 import { geoSearchParams } from 'common/utils';
-import { Button, Loader } from 'common';
+import { LoadingQuantity } from 'components/geodb';
 import styles from 'components/geodb/index.module.css';
 
 interface Props {
@@ -11,11 +11,9 @@ interface Props {
   isLoadingMore: boolean;
 }
 
-const City: FC<Props> = ({ cities = {}, loadMore, isLoadingMore }) => {
+const City: FC<Props> = ({ cities, loadMore, isLoadingMore }) => {
   const { data = [], links = [], metadata, message = '' } = cities;
   const { offsetCurrent, offsetLast } = geoSearchParams(links);
-  const lastElement = offsetLast <= offsetCurrent;
-  const isShowButton = (lastElement && message.length > 0) || !lastElement;
 
   return (
     <div>
@@ -27,23 +25,14 @@ const City: FC<Props> = ({ cities = {}, loadMore, isLoadingMore }) => {
           </Link>
         ))}
       </div>
-      {isLoadingMore && <Loader />}
-      <div className={styles.listInfo}>
-        {offsetLast > 0 && (
-          <div className={styles.total}>
-            <span className={styles.quantity}>Quantity:</span>
-            <b>{!lastElement ? offsetCurrent : metadata?.totalCount}</b>/{metadata?.totalCount}
-          </div>
-        )}
-        {isShowButton && (
-          <div>
-            <Button disabled={isLoadingMore} onClick={() => loadMore(offsetCurrent)}>
-              {'Load more'}
-            </Button>
-          </div>
-        )}
-      </div>
-      {message && <div className={styles.message}>{message}</div>}
+      <LoadingQuantity
+        isLoadingMore={isLoadingMore}
+        offsetCurrent={offsetCurrent}
+        offsetLast={offsetLast}
+        loadMore={loadMore}
+        message={message}
+        metadata={metadata}
+      />
     </div>
   );
 };
