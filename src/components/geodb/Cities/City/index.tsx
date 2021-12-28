@@ -1,29 +1,30 @@
 import React, { FC } from 'react';
-import { IListRegions } from 'types';
+import { Link } from 'react-router-dom';
+import { IListCities } from 'types';
 import { geoSearchParams } from 'common/utils';
 import { Button, Loader } from 'common';
-import styles from './index.module.css';
+import styles from 'components/geodb/index.module.css';
 
 interface Props {
-  regions: IListRegions;
+  cities: IListCities;
   loadMore: (offsetCurrent: number) => void;
   isLoadingMore: boolean;
 }
 
-const Region: FC<Props> = ({ regions = {}, loadMore, isLoadingMore }) => {
-  const { data = [], links = [], metadata, message = '' } = regions;
+const City: FC<Props> = ({ cities = {}, loadMore, isLoadingMore }) => {
+  const { data = [], links = [], metadata, message = '' } = cities;
   const { offsetCurrent, offsetLast } = geoSearchParams(links);
   const lastElement = offsetLast <= offsetCurrent;
   const isShowButton = (lastElement && message.length > 0) || !lastElement;
 
   return (
-    <div className={styles.wrapper}>
-      <h3 className={styles.title}>Regions</h3>
+    <div>
+      <h3 className={styles.title}>Cities List</h3>
       <div className={styles.itemsList}>
-        {data.map(({ wikiDataId, name }, index: number) => (
-          <div key={wikiDataId} className={styles.item}>
-            <span className={styles.index}>{++index}.</span> {name}
-          </div>
+        {data.map(({ id, name, country, wikiDataId }) => (
+          <Link key={id} to={wikiDataId} className={styles.item}>
+            {name} <span className={styles.country}>{country}</span>
+          </Link>
         ))}
       </div>
       {isLoadingMore && <Loader />}
@@ -47,4 +48,4 @@ const Region: FC<Props> = ({ regions = {}, loadMore, isLoadingMore }) => {
   );
 };
 
-export default Region;
+export default City;

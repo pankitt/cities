@@ -1,35 +1,34 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { SiWikidata, SiWikipedia, SiGooglemaps } from 'react-icons/si';
-import { BsCurrencyExchange, BsPhoneVibrate } from 'react-icons/bs';
-import { useCountryDetails } from 'hooks';
+import { useCityDetails } from 'hooks';
 import { Button, Loader } from 'common';
-import Regions from 'components/Regions';
-import styles from './index.module.css';
+import styles from 'components/geodb/index.module.css';
 
-const CountryDetails = (): JSX.Element => {
+const CityDetails = (): JSX.Element => {
   const params = useParams();
   const { id = '' } = params;
   const [currentState, setCurrentState] = useState({
     detailsCode: id,
     loadMoreCounter: 0
   });
-  const [country, isLoading] = useCountryDetails(currentState);
+  const [city, isLoading] = useCityDetails(currentState);
   const {
     data = {
       name: '',
-      code: '',
-      capital: '',
-      flagImageUri: '',
-      callingCode: '',
-      wikiDataId: '',
-      numRegions: 0,
-      currencyCodes: []
+      country: '',
+      countryCode: '',
+      type: '',
+      population: 0,
+      region: '',
+      regionCode: '',
+      timezone: '',
+      wikiDataId: ''
     },
     message = ''
-  } = country;
+  } = city;
 
-  const { name, code, capital, flagImageUri, callingCode, wikiDataId, numRegions, currencyCodes } =
+  const { name, country, countryCode, type, population, region, regionCode, timezone, wikiDataId } =
     data;
 
   const loadMore = (): void =>
@@ -39,49 +38,53 @@ const CountryDetails = (): JSX.Element => {
     }));
 
   return (
-    <div className={styles.wrapper}>
+    <div>
       {isLoading ? (
         <Loader />
       ) : (
         <div>
-          {name && (
-            <h1 className={styles.title}>
-              {name} <img alt="flag" src={flagImageUri} className={styles.flag} />
-            </h1>
-          )}
+          {name && <h1 className={styles.titleDetails}>{name}</h1>}
           <div className={styles.info}>
-            {code && (
+            {type && (
               <div className={styles.infoItem}>
-                <span className={styles.infoItemTitle}>Code:</span>
-                {code}
+                <span className={styles.infoItemTitle}>Type:</span>
+                {type}
               </div>
             )}
-            {capital && (
+            {population > 0 && (
               <div className={styles.infoItem}>
-                <span className={styles.infoItemTitle}>Capital:</span>
-                {capital}
+                <span className={styles.infoItemTitle}>Population:</span>
+                {population}
               </div>
             )}
-            {numRegions > 0 && (
+            {country && (
               <div className={styles.infoItem}>
-                <span className={styles.infoItemTitle}>Regions:</span>
-                {numRegions}
+                <span className={styles.infoItemTitle}>Country:</span>
+                <b>{country}</b>
               </div>
             )}
-            {callingCode && (
+            {countryCode && (
               <div className={styles.infoItem}>
-                <span className={styles.infoItemTitle}>Calling Code:</span>
-                <BsPhoneVibrate className={styles.iconPhone} /> {callingCode}
+                <span className={styles.infoItemTitle}>Country Code:</span>
+                {countryCode}
               </div>
             )}
-            {currencyCodes.length > 0 && (
+            {region && (
               <div className={styles.infoItem}>
-                <span className={styles.infoItemTitle}>Currency:</span>
-                {currencyCodes.map((code) => (
-                  <span key={code} className={styles.currencyCode}>
-                    <BsCurrencyExchange className={styles.iconCurrency} /> {code}
-                  </span>
-                ))}
+                <span className={styles.infoItemTitle}>Region:</span>
+                {region}
+              </div>
+            )}
+            {regionCode && (
+              <div className={styles.infoItem}>
+                <span className={styles.infoItemTitle}>Region Code:</span>
+                {regionCode}
+              </div>
+            )}
+            {timezone && (
+              <div className={styles.infoItem}>
+                <span className={styles.infoItemTitle}>Timezone:</span>
+                {timezone}
               </div>
             )}
             {wikiDataId && (
@@ -125,9 +128,8 @@ const CountryDetails = (): JSX.Element => {
           </div>
         </div>
       )}
-      {numRegions > 0 && code && <Regions code={code} />}
     </div>
   );
 };
 
-export default CountryDetails;
+export default CityDetails;

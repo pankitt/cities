@@ -1,10 +1,10 @@
 import React, { FC, useState, useEffect } from 'react';
 import { ISearchData } from 'types';
 import { useRegions } from 'hooks';
-import Region from 'components/Regions/Region';
+import Region from 'components/geodb/Regions/Region';
 import Search from 'common/Search';
 import { Loader } from 'common';
-import styles from './index.module.css';
+import styles from 'components/geodb/index.module.css';
 
 interface Props {
   code: string;
@@ -41,7 +41,7 @@ const Regions: FC<Props> = ({ code = '' }) => {
   }, [code]);
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapperRegions}>
       {isLoading ? (
         <Loader />
       ) : (

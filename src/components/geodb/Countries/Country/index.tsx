@@ -1,29 +1,29 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { IListCities } from 'types';
+import { IListCountries } from 'types';
 import { geoSearchParams } from 'common/utils';
 import { Button, Loader } from 'common';
-import styles from './index.module.css';
+import styles from 'components/geodb/index.module.css';
 
 interface Props {
-  cities: IListCities;
+  countries: IListCountries;
   loadMore: (offsetCurrent: number) => void;
   isLoadingMore: boolean;
 }
 
-const City: FC<Props> = ({ cities = {}, loadMore, isLoadingMore }) => {
-  const { data = [], links = [], metadata, message = '' } = cities;
+const Country: FC<Props> = ({ countries = {}, loadMore, isLoadingMore }) => {
+  const { data = [], links = [], metadata, message = '' } = countries;
   const { offsetCurrent, offsetLast } = geoSearchParams(links);
   const lastElement = offsetLast <= offsetCurrent;
   const isShowButton = (lastElement && message.length > 0) || !lastElement;
 
   return (
-    <div className={styles.wrapper}>
-      <h3 className={styles.title}>Cities List</h3>
+    <div>
+      <h3 className={styles.title}>Countries List</h3>
       <div className={styles.itemsList}>
-        {data.map(({ id, name, country, wikiDataId }) => (
-          <Link key={id} to={wikiDataId} className={styles.item}>
-            {name} <span className={styles.country}>{country}</span>
+        {data.map(({ code, name }, index: number) => (
+          <Link to={code} key={code} className={styles.item}>
+            <span className={styles.index}>{++index}.</span> {name}
           </Link>
         ))}
       </div>
@@ -48,4 +48,4 @@ const City: FC<Props> = ({ cities = {}, loadMore, isLoadingMore }) => {
   );
 };
 
-export default City;
+export default Country;

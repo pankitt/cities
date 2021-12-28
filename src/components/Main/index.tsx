@@ -2,10 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Page } from 'common/constants';
 import Home from 'components/Home';
-import Countries from 'components/Countries';
-import CountryDetails from 'components/Countries/CountryDetails';
-import Cities from 'components/Cities';
-import CityDetails from 'components/Cities/CityDetails';
+import { Countries, CountryDetails, Cities, CityDetails } from 'components/geodb';
 import styles from './index.module.css';
 
 const Main = (): JSX.Element => {

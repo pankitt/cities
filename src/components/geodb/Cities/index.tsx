@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { ISearchData } from 'types';
-import City from 'components/Cities/City';
+import City from 'components/geodb/Cities/City';
 import Search from 'common/Search';
 import { useCities } from 'hooks';
 import { Loader } from 'common';
-import styles from './index.module.css';
 
 const Cities = (): JSX.Element => {
   const [currentState, setCurrentState] = useState({
@@ -28,17 +27,15 @@ const Cities = (): JSX.Element => {
     }));
 
   return (
-    <div className={styles.wrapper}>
-      <div>
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <>
-            <Search onSubmit={onSearch} />
-            <City cities={cities} loadMore={loadMore} isLoadingMore={isLoadingMore} />
-          </>
-        )}
-      </div>
+    <div>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <Search onSubmit={onSearch} />
+          <City cities={cities} loadMore={loadMore} isLoadingMore={isLoadingMore} />
+        </>
+      )}
     </div>
   );
 };
