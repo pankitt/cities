@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { MdOutlineHomeWork } from 'react-icons/md';
-import { AiOutlineSetting } from 'react-icons/ai';
+import Language from './Language';
 import { Page } from 'common/constants';
 import styles from './index.module.css';
 
@@ -25,9 +25,7 @@ const Header = (): JSX.Element => (
           Cities
         </NavLink>
       </nav>
-      <div className={styles.settings}>
-        <AiOutlineSetting className={styles.iconSetting} />
-      </div>
+      <Language />
     </div>
   </div>
 );

@@ -108,3 +108,8 @@ export interface ICityDetailsFetch {
 export type ISearchData = {
   name: string;
 };
+
+export type LanguageType = 'en' | 'de' | 'es' | 'fr' | 'it' | 'pt' | 'pt_BR' | 'ru';
+export interface ILanguage {
+  language: LanguageType;
+}

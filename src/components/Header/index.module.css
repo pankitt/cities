@@ -18,9 +18,6 @@
 }
 .nav {
 }
-.settings {
-  display: inherit;
-}
 .link, .linkActive  {
   color: var(--color-white);
   cursor: pointer;
@@ -33,22 +30,6 @@
 .linkActive {
   text-decoration: underline;
 }
-
-.icon, .iconSetting {
+.icon {
   font-size: 20px;
-}
-.iconSetting {
-  cursor: pointer;
-}
-.iconSetting:hover {
-  animation: Icon-spin forwards .2s linear;
-}
-
-@keyframes Icon-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(30deg);
-  }
 }

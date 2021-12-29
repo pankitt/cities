@@ -1,5 +1,4 @@
-import { Types } from './types';
-import { InitialStateType, Actions } from './types';
+import { Types, InitialStateType, Actions } from './types';
 
 const data = {
   data: [],

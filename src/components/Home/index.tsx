@@ -6,7 +6,7 @@ import styles from './index.module.css';
 
 const Home = (): JSX.Element => {
   return (
-    <div className={styles.wrapper}>
+    <div>
       <div className={styles.globe}>{svgIcon.globe}</div>
       <ul className={styles.list}>
         <li>

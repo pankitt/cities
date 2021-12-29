@@ -1,0 +1,17 @@
+.iconSetting {
+  vertical-align: middle;
+  font-size: 20px;
+  cursor: pointer;
+}
+.iconSetting:hover {
+  animation: Icon-spin forwards .2s linear;
+}
+
+@keyframes Icon-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(30deg);
+  }
+}
