@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-// import { LanguageType, ILanguage } from 'types';
 import { AiOutlineSetting } from 'react-icons/ai';
 import { useI18n } from 'hooks';
 import { Dropdown } from 'common';

@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { useI18n } from 'hooks';
 import { IMetaData } from 'types';
 import { Button, Loader } from 'common';
 import styles from './index.module.css';
@@ -22,6 +23,7 @@ const LoadingQuantity: FC<Props> = ({
 }) => {
   const lastElement = offsetLast <= offsetCurrent;
   const isShowButton = (lastElement && message.length > 0) || !lastElement;
+  const { t } = useI18n();
 
   return (
     <>
@@ -29,14 +31,14 @@ const LoadingQuantity: FC<Props> = ({
       <div className={styles.listInfo}>
         {offsetLast > 0 && (
           <div className={styles.total}>
-            <span className={styles.quantity}>Quantity:</span>
+            <span className={styles.quantity}>{t('main.quantity')}:</span>
             <b>{!lastElement ? offsetCurrent : metadata?.totalCount}</b>/{metadata?.totalCount}
           </div>
         )}
         {isShowButton && (
           <div>
             <Button disabled={isLoadingMore} onClick={() => loadMore(offsetCurrent)}>
-              {'Load more'}
+              {t('main.load')}
             </Button>
           </div>
         )}

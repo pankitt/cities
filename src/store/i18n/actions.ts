@@ -1,4 +1,3 @@
-// import { ILanguage, LanguageType } from 'types';
 import { Types, LanguageActionType } from './types';
 
 export const setLanguageAction = (payload: { language: string }): LanguageActionType =>

@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
+import { useI18n } from 'hooks';
 import { IListCities } from 'types';
 import { geoSearchParams } from 'common/utils';
 import { LoadingQuantity } from 'components/geodb';
@@ -14,10 +15,11 @@ interface Props {
 const City: FC<Props> = ({ cities, loadMore, isLoadingMore }) => {
   const { data = [], links = [], metadata, message = '' } = cities;
   const { offsetCurrent, offsetLast } = geoSearchParams(links);
+  const { t } = useI18n();
 
   return (
     <div>
-      <h3 className={styles.title}>Cities List</h3>
+      <h3 className={styles.title}>{t('main.cities')}:</h3>
       <div className={styles.itemsList}>
         {data.map(({ id, name, country, wikiDataId }) => (
           <Link key={id} to={wikiDataId} className={styles.item}>
