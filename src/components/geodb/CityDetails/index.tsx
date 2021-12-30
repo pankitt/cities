@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { SiWikidata, SiWikipedia, SiGooglemaps } from 'react-icons/si';
 import { I18nContext } from 'store/i18n';
-import { useCityDetails } from 'hooks';
+import { useCityDetails, useI18n } from 'hooks';
 import { Button, Loader } from 'common';
 import styles from 'components/geodb/index.module.css';
 
@@ -10,6 +10,7 @@ const CityDetails = (): JSX.Element => {
   const params = useParams();
   const { id = '' } = params;
 
+  const { t } = useI18n();
   const { state: i18n } = useContext(I18nContext);
   const { language } = i18n;
 
@@ -60,43 +61,43 @@ const CityDetails = (): JSX.Element => {
           <div className={styles.info}>
             {type && (
               <div className={styles.infoItem}>
-                <span className={styles.infoItemTitle}>Type:</span>
+                <span className={styles.infoItemTitle}>{t('details.type')}:</span>
                 {type}
               </div>
             )}
             {population > 0 && (
               <div className={styles.infoItem}>
-                <span className={styles.infoItemTitle}>Population:</span>
+                <span className={styles.infoItemTitle}>{t('details.population')}:</span>
                 {population}
               </div>
             )}
             {country && (
               <div className={styles.infoItem}>
-                <span className={styles.infoItemTitle}>Country:</span>
+                <span className={styles.infoItemTitle}>{t('details.country')}:</span>
                 <b>{country}</b>
               </div>
             )}
             {countryCode && (
               <div className={styles.infoItem}>
-                <span className={styles.infoItemTitle}>Country Code:</span>
+                <span className={styles.infoItemTitle}>{t('details.countryCode')}:</span>
                 {countryCode}
               </div>
             )}
             {region && (
               <div className={styles.infoItem}>
-                <span className={styles.infoItemTitle}>Region:</span>
+                <span className={styles.infoItemTitle}>{t('details.region')}:</span>
                 {region}
               </div>
             )}
             {regionCode && (
               <div className={styles.infoItem}>
-                <span className={styles.infoItemTitle}>Region Code:</span>
+                <span className={styles.infoItemTitle}>{t('details.regionCode')}:</span>
                 {regionCode}
               </div>
             )}
             {timezone && (
               <div className={styles.infoItem}>
-                <span className={styles.infoItemTitle}>Timezone:</span>
+                <span className={styles.infoItemTitle}>{t('details.timezone')}:</span>
                 {timezone}
               </div>
             )}

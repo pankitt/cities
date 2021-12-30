@@ -12,7 +12,18 @@ export const en = {
   'main.cities': 'Cities',
   'main.regions': 'Regions',
   'main.quantity': 'Quantity',
-  'main.load': 'Load more'
+  'main.load': 'Load more',
+  'details.countryCode': 'Country Code',
+  'details.capital': 'Capital',
+  'details.regions': 'Regions',
+  'details.callingCode': 'Telephone Code',
+  'details.currency': 'Currency',
+  'details.type': 'Type',
+  'details.population': 'Population',
+  'details.country': 'Country',
+  'details.region': 'Region',
+  'details.regionCode': 'Region Code',
+  'details.timezone': 'Time Zone'
 };
 // German
 export const de = {
@@ -28,7 +39,18 @@ export const de = {
   'main.cities': 'Städte',
   'main.regions': 'Regionen',
   'main.quantity': 'Menge',
-  'main.load': 'Mehr laden'
+  'main.load': 'Mehr laden',
+  'details.countryCode': 'Landesvorwahl',
+  'details.capital': 'Hauptstadt',
+  'details.regions': 'Regionen',
+  'details.callingCode': 'Telefoncode',
+  'details.currency': 'Währung',
+  'details.type': 'Typ',
+  'details.population': 'Bevölkerung',
+  'details.country': 'Land',
+  'details.region': 'Region',
+  'details.regionCode': 'Postleitzahl',
+  'details.timezone': 'Zeitzone'
 };
 // Spanish
 export const es = {
@@ -44,7 +66,18 @@ export const es = {
   'main.cities': 'Ciudades',
   'main.regions': 'Regiones',
   'main.quantity': 'Cantidad',
-  'main.load': 'Carga más'
+  'main.load': 'Carga más',
+  'details.countryCode': 'Código de País',
+  'details.capital': 'Capital',
+  'details.regions': 'Regiones',
+  'details.callingCode': 'Codigo Telefonico',
+  'details.currency': 'Divisa',
+  'details.type': 'Escribe',
+  'details.population': 'Población',
+  'details.country': 'País',
+  'details.region': 'Región',
+  'details.regionCode': 'Código de región',
+  'details.timezone': 'Zona Horaria'
 };
 // French
 export const fr = {
@@ -60,7 +93,18 @@ export const fr = {
   'main.cities': 'Villes',
   'main.regions': 'Régions',
   'main.quantity': 'Quantité',
-  'main.load': 'Charger plus'
+  'main.load': 'Charger plus',
+  'details.countryCode': 'Code Postal',
+  'details.capital': 'Capitale',
+  'details.regions': 'Régions',
+  'details.callingCode': 'Indicatif Téléphonique',
+  'details.currency': 'Devise',
+  'details.type': 'Taper',
+  'details.population': 'Population',
+  'details.country': 'Pays',
+  'details.region': 'Région',
+  'details.regionCode': 'Code de Région',
+  'details.timezone': 'Fuseau Horaire'
 };
 // Italian
 export const it = {
@@ -76,7 +120,18 @@ export const it = {
   'main.cities': 'Città',
   'main.regions': 'Regioni',
   'main.quantity': 'Quantità',
-  'main.load': 'Carica di più'
+  'main.load': 'Carica di più',
+  'details.countryCode': 'Prefisso Internazionale',
+  'details.capital': 'Capitale',
+  'details.regions': 'Regioni',
+  'details.callingCode': 'Prefisso Telefonico',
+  'details.currency': 'Moneta',
+  'details.type': 'Tipo',
+  'details.population': 'Popolazione',
+  'details.country': 'Nazione',
+  'details.region': 'Regione',
+  'details.regionCode': 'Codice Regione',
+  'details.timezone': 'Fuso Orario'
 };
 // Portuguese
 export const pt = {
@@ -92,7 +147,18 @@ export const pt = {
   'main.cities': 'Cidades',
   'main.regions': 'Regiões',
   'main.quantity': 'Quantidade',
-  'main.load': 'Carregue mais'
+  'main.load': 'Carregue mais',
+  'details.countryCode': 'Código do País',
+  'details.capital': 'Capital',
+  'details.regions': 'Regiões',
+  'details.callingCode': 'Código de Telefone',
+  'details.currency': 'Moeda',
+  'details.type': 'Modelo',
+  'details.population': 'População',
+  'details.country': 'País',
+  'details.region': 'Região',
+  'details.regionCode': 'Código Regional',
+  'details.timezone': 'Fuso Horário'
 };
 // Portuguese (Brazil)
 export const pt_BR = {
@@ -108,7 +174,18 @@ export const pt_BR = {
   'main.cities': 'Cidades',
   'main.regions': 'Regiões',
   'main.quantity': 'Quantidade',
-  'main.load': 'Carregue mais'
+  'main.load': 'Carregue mais',
+  'details.countryCode': 'Código do País',
+  'details.capital': 'Capital',
+  'details.regions': 'Regiões',
+  'details.callingCode': 'Código de Telefone',
+  'details.currency': 'Moeda',
+  'details.type': 'Modelo',
+  'details.population': 'População',
+  'details.country': 'País',
+  'details.region': 'Região',
+  'details.regionCode': 'Código Regional',
+  'details.timezone': 'Fuso Horário'
 };
 // Russian
 export const ru = {
@@ -124,5 +201,16 @@ export const ru = {
   'main.cities': 'Города',
   'main.regions': 'Регионы',
   'main.quantity': 'Количество',
-  'main.load': 'Загрузить больше'
+  'main.load': 'Загрузить больше',
+  'details.countryCode': 'Код Страны',
+  'details.capital': 'Столица',
+  'details.regions': 'Регионы',
+  'details.callingCode': 'Телефонный код',
+  'details.currency': 'Валюта',
+  'details.type': 'Тип',
+  'details.population': 'Население',
+  'details.country': 'Страна',
+  'details.region': 'Регион',
+  'details.regionCode': 'Код Региона',
+  'details.timezone': 'Часовой Пояс'
 };

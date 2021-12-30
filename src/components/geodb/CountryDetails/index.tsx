@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { SiWikidata, SiWikipedia, SiGooglemaps } from 'react-icons/si';
 import { BsCurrencyExchange, BsPhoneVibrate } from 'react-icons/bs';
 import { I18nContext } from 'store/i18n';
-import { useCountryDetails } from 'hooks';
+import { useCountryDetails, useI18n } from 'hooks';
 import { Button, Loader } from 'common';
 import { Regions } from 'components/geodb';
 import styles from 'components/geodb/index.module.css';
@@ -12,6 +12,7 @@ const CountryDetails = (): JSX.Element => {
   const params = useParams();
   const { id = '' } = params;
 
+  const { t } = useI18n();
   const { state: i18n } = useContext(I18nContext);
   const { language } = i18n;
 
@@ -65,31 +66,31 @@ const CountryDetails = (): JSX.Element => {
           <div className={styles.info}>
             {code && (
               <div className={styles.infoItem}>
-                <span className={styles.infoItemTitle}>Code:</span>
+                <span className={styles.infoItemTitle}>{t('details.countryCode')}:</span>
                 {code}
               </div>
             )}
             {capital && (
               <div className={styles.infoItem}>
-                <span className={styles.infoItemTitle}>Capital:</span>
+                <span className={styles.infoItemTitle}>{t('details.capital')}:</span>
                 {capital}
               </div>
             )}
             {numRegions > 0 && (
               <div className={styles.infoItem}>
-                <span className={styles.infoItemTitle}>Regions:</span>
+                <span className={styles.infoItemTitle}>{t('details.regions')}:</span>
                 {numRegions}
               </div>
             )}
             {callingCode && (
               <div className={styles.infoItem}>
-                <span className={styles.infoItemTitle}>Calling Code:</span>
+                <span className={styles.infoItemTitle}>{t('details.callingCode')}:</span>
                 <BsPhoneVibrate className={styles.iconPhone} /> {callingCode}
               </div>
             )}
             {currencyCodes.length > 0 && (
               <div className={styles.infoItem}>
-                <span className={styles.infoItemTitle}>Currency:</span>
+                <span className={styles.infoItemTitle}>{t('details.currency')}:</span>
                 {currencyCodes.map((code) => (
                   <span key={code} className={styles.currencyCode}>
                     <BsCurrencyExchange className={styles.iconCurrency} /> {code}
@@ -138,7 +139,7 @@ const CountryDetails = (): JSX.Element => {
           </div>
         </div>
       )}
-      {numRegions > 0 && code && <Regions code={code} />}
+      {numRegions > 0 && code && <Regions code={code} language={language} />}
     </div>
   );
 };
