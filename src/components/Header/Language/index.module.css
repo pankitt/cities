@@ -15,3 +15,21 @@
     transform: rotate(30deg);
   }
 }
+
+.title {
+  margin-right: 3px;
+}
+.options {
+  border: solid 1px var(--color-blue-line);
+  border-radius: 4px;
+  background: var(--color-white);
+  color: var(--color-blue);
+  padding: 10px;
+}
+.item {
+  cursor: pointer;
+  padding: 2px 0;
+}
+.item:hover, .active {
+  text-decoration: underline;
+}

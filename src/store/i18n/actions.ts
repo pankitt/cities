@@ -1,7 +1,8 @@
-import { ILanguage } from 'types';
+// import { ILanguage, LanguageType } from 'types';
 import { Types, LanguageActionType } from './types';
 
-export const setLanguageAction = (payload: ILanguage): LanguageActionType => ({
-  type: Types.SET_LANGUAGE,
-  payload
-});
+export const setLanguageAction = (payload: { language: string }): LanguageActionType =>
+  <LanguageActionType>{
+    type: Types.SET_LANGUAGE,
+    payload
+  };
