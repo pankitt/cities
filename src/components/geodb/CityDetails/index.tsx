@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { SiWikidata, SiWikipedia, SiGooglemaps } from 'react-icons/si';
+import { I18nContext } from 'store/i18n';
 import { useCityDetails } from 'hooks';
 import { Button, Loader } from 'common';
 import styles from 'components/geodb/index.module.css';
@@ -8,9 +9,14 @@ import styles from 'components/geodb/index.module.css';
 const CityDetails = (): JSX.Element => {
   const params = useParams();
   const { id = '' } = params;
+
+  const { state: i18n } = useContext(I18nContext);
+  const { language } = i18n;
+
   const [currentState, setCurrentState] = useState({
     detailsCode: id,
-    loadMoreCounter: 0
+    loadMoreCounter: 0,
+    languageCode: language
   });
   const [city, isLoading] = useCityDetails(currentState);
   const {
@@ -36,6 +42,13 @@ const CityDetails = (): JSX.Element => {
       ...prevState,
       loadMoreCounter: ++prevState.loadMoreCounter
     }));
+
+  useEffect(() => {
+    setCurrentState((prevState) => ({
+      ...prevState,
+      languageCode: language
+    }));
+  }, [language]);
 
   return (
     <div>

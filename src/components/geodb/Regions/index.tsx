@@ -1,5 +1,6 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect, useContext } from 'react';
 import { ISearchData } from 'types';
+import { I18nContext } from 'store/i18n';
 import { useRegions } from 'hooks';
 import Region from 'components/geodb/Regions/Region';
 import Search from 'common/Search';
@@ -11,11 +12,15 @@ interface Props {
 }
 
 const Regions: FC<Props> = ({ code = '' }) => {
+  const { state: i18n } = useContext(I18nContext);
+  const { language } = i18n;
+
   const [currentState, setCurrentState] = useState({
     detailsCode: '',
     namePrefix: '',
     offset: 0,
-    loadMoreCounter: 0
+    loadMoreCounter: 0,
+    languageCode: language
   });
   const [regions, isLoading, isLoadingMore] = useRegions(currentState);
 
@@ -36,9 +41,10 @@ const Regions: FC<Props> = ({ code = '' }) => {
     setCurrentState((prevState) => ({
       ...prevState,
       offset: 0,
-      detailsCode: code
+      detailsCode: code,
+      languageCode: language
     }));
-  }, [code]);
+  }, [code, language]);
 
   return (
     <div className={styles.wrapperRegions}>
