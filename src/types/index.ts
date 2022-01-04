@@ -59,6 +59,7 @@ export interface IGeoParams {
   languageCode?: string;
   detailsCode?: string;
   namePrefix?: string;
+  countryIds?: string;
 }
 export interface IGeoParamsApi extends IGeoParams {
   name: string;

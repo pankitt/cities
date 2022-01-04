@@ -1,12 +1,15 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { SiWikidata, SiWikipedia, SiGooglemaps } from 'react-icons/si';
 import { BsCurrencyExchange, BsPhoneVibrate } from 'react-icons/bs';
+import { FaCity, FaAngleRight } from 'react-icons/fa';
 import ReactCountryFlag from 'react-country-flag';
 import { I18nContext } from 'store/i18n';
+import { FiltersContext, setCountriesFilterAction } from 'store/filters';
 import { useCountryDetails, useI18n } from 'hooks';
 import { Button, Loader } from 'common';
 import { Regions } from 'components/geodb';
+import { Page } from 'common/constants';
 import styles from 'components/geodb/index.module.css';
 
 const CountryDetails = (): JSX.Element => {
@@ -16,6 +19,8 @@ const CountryDetails = (): JSX.Element => {
   const { t } = useI18n();
   const { state: i18n } = useContext(I18nContext);
   const { language } = i18n;
+
+  const { dispatch } = useContext(FiltersContext);
 
   const [currentState, setCurrentState] = useState({
     detailsCode: id,
@@ -65,6 +70,17 @@ const CountryDetails = (): JSX.Element => {
                 <ReactCountryFlag countryCode={code} className={styles.flag} title={name} svg />
               </span>
             </h1>
+          )}
+          {code && (
+            <Link
+              to={Page.CITIES}
+              className={styles.linkCities}
+              onClick={() => dispatch(setCountriesFilterAction(code))}
+            >
+              <FaCity className={styles.iconCity} />
+              Cities
+              <FaAngleRight className={styles.iconRight} />
+            </Link>
           )}
           <div className={styles.info}>
             {code && (

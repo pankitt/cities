@@ -22,6 +22,9 @@
 .index {
   font-size: 11px;
 }
+.filters {
+  display: flex;
+}
 /* Details */
 .titleDetails {
   font-size: calc(22px + var(--device-wv));
@@ -30,6 +33,32 @@
   padding: 0 10px;
   box-shadow: 2px 2px 1px var(--color-blue-line);
   text-shadow: 2px 2px 1px var(--color-blue-line);
+  margin-top: 0;
+}
+.linkCities, .countryFilter {
+  display: inline-block;
+  border-radius: 4px;
+  font-size: calc(10px + var(--device-wv));
+  color: var(--color-dark-blue);
+  font-weight: bold;
+  background-color: var(--color-light-blue);
+  box-shadow: 2px 2px 1px var(--color-blue-line);
+  cursor: pointer;
+  margin-bottom: 10px;
+  padding: 5px 5px 5px 10px;
+}
+.countryFilter {
+  display: inline-block;
+  color: var(--color-red);
+  padding: 1px 5px 1px 10px;
+  margin-left: 10px;
+}
+.linkCities:hover, .countryFilter:hover {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+}
+.flagFilter {
+  font-size: 24px;
 }
 .flagBlock {
   display: inline-block;
@@ -68,7 +97,7 @@
   margin-top: 10px;
 }
 
-.iconWikiData, .iconWiki, .iconGoogleMaps, .iconPhone, .iconCurrency {
+.iconWikiData, .iconWiki, .iconGoogleMaps, .iconPhone, .iconCurrency, .iconCity, .iconRight, .iconCloseFilter {
   position: relative;
   vertical-align: middle;
   margin: -5px 0;
@@ -91,6 +120,20 @@
   font-size: 20px;
   position: relative;
   top: -2px;
+}
+.iconCity {
+  font-size: 20px;
+  top: -2px;
+  margin-right: 5px;
+}
+.iconRight {
+  font-size: 15px;
+  top: -2px;
+  margin-left: 3px;
+}
+.iconCloseFilter {
+  font-size: 20px;
+  margin-left: 5px;
 }
 
 .currencyCode {

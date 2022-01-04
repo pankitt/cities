@@ -8,6 +8,7 @@ export const useCities = ({
   offset,
   languageCode,
   namePrefix,
+  countryIds,
   loadMoreCounter
 }: IGeoParamsHook): readonly [IListCities, boolean, boolean] => {
   const [cities, setCities] = useState<IListCities>({} as IListCities);
@@ -25,7 +26,8 @@ export const useCities = ({
         limit,
         offset,
         languageCode,
-        namePrefix
+        namePrefix,
+        countryIds
       });
       if (!cleanup) {
         dispatch(setCitiesAction(result));
@@ -40,7 +42,7 @@ export const useCities = ({
     return () => {
       cleanup = true;
     };
-  }, [limit, offset, languageCode, namePrefix, loadMoreCounter]);
+  }, [limit, offset, languageCode, namePrefix, countryIds, loadMoreCounter]);
 
   useEffect(() => {
     setCities(state.cities);
