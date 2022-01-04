@@ -78,7 +78,7 @@ const CountryDetails = (): JSX.Element => {
               onClick={() => dispatch(setCountriesFilterAction(code))}
             >
               <FaCity className={styles.iconCity} />
-              Cities
+              {t('main.cities')}
               <FaAngleRight className={styles.iconRight} />
             </Link>
           )}

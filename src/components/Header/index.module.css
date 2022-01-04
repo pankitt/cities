@@ -23,7 +23,7 @@
   vertical-align: middle;
   padding: 2px 10px;
 }
-.link:hover, .linkActive:hover {
+.link:hover {
   text-decoration: underline;
 }
 .linkActive {
