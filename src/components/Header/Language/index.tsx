@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
 import { AiOutlineSetting } from 'react-icons/ai';
+import ReactCountryFlag from 'react-country-flag';
 import { useI18n } from 'hooks';
 import { Dropdown } from 'common';
+import { setLocalisation } from 'common/utils';
 import { I18nContext, setLanguageAction } from 'store/i18n';
 import { LANGUAGES } from 'components/Header/constants';
 import styles from './index.module.css';
@@ -13,7 +15,12 @@ const Trigger = (): JSX.Element => {
 
   return (
     <div className={styles.select}>
-      <span className={styles.title}>{t(`language.${language}`)}</span>
+      <ReactCountryFlag
+        countryCode={setLocalisation(language)}
+        className={styles.flag}
+        title={t(`language.${language}`)}
+        svg
+      />
       <AiOutlineSetting className={styles.iconSetting} />
     </div>
   );
@@ -32,6 +39,11 @@ const Content = (): JSX.Element => {
           onClick={() => dispatch(setLanguageAction({ language }))}
           role="presentation"
         >
+          <ReactCountryFlag
+            countryCode={setLocalisation(language)}
+            className={styles.flagSmall}
+            svg
+          />
           {t(`language.${language}`)}
         </div>
       ))}

@@ -22,25 +22,35 @@
 .index {
   font-size: 11px;
 }
-.country {
-  font-size: 12px;
-  font-style: italic;
-}
 /* Details */
 .titleDetails {
   font-size: calc(22px + var(--device-wv));
+  background-color: var(--color-light-blue);
+  border-radius: 4px;
+  padding: 0 10px;
+  box-shadow: 2px 2px 1px var(--color-blue-line);
+  text-shadow: 2px 2px 1px var(--color-blue-line);
+}
+.flagBlock {
+  display: inline-block;
+  padding: 0 10px;
+  margin-left: 10px;
 }
 .flag {
-  width: 60px;
-  font-weight: normal;
-  font-size: 12px;
+  font-size: 80px;
   vertical-align: middle;
+}
+.flagSmall {
+  font-size: 20px;
+  vertical-align: middle;
+  margin: -5px 0 0 7px;
 }
 .info {
   border: 1px solid var(--color-light-blue);
-  border-radius: 2px;
+  border-radius: 4px;
   padding: 10px;
   font-size: 14px;
+  box-shadow: 2px 2px 1px var(--color-blue-line);
 }
 .infoItem {
   border-bottom: 1px solid var(--color-light-blue);
@@ -103,8 +113,10 @@
   padding: 10px;
   font-size: 14px;
   margin-top: 20px;
+  box-shadow: 1px 2px 1px var(--color-blue-line);
 }
 .titleRegion {
+  font-style: italic;
   font-size: calc(13px + var(--device-wv));
 }
 .itemRegion {

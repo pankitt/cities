@@ -3,7 +3,7 @@
   font-size: 20px;
   cursor: pointer;
 }
-.iconSetting:hover {
+.select:hover .iconSetting {
   animation: Icon-spin forwards .2s linear;
 }
 
@@ -16,20 +16,28 @@
   }
 }
 
-.title {
-  margin-right: 3px;
-}
 .options {
+  width: 155px;
+  margin-left: -110px;
   border: solid 1px var(--color-blue-line);
   border-radius: 4px;
   background: var(--color-white);
   color: var(--color-blue);
-  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.24);
+  padding: 5px;
 }
 .item {
   cursor: pointer;
-  padding: 2px 0;
+  border-radius: 2px;
+  padding: 2px 5px;
 }
 .item:hover, .active {
-  text-decoration: underline;
+  background-color: var(--color-light-blue);
+}
+.flag {
+  font-size: 22px;
+  margin-right: 3px;
+}
+.flagSmall {
+  margin: -3px 5px 0 0;
 }

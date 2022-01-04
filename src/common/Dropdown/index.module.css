@@ -1,13 +1,8 @@
 .dropdown {
   position: relative;
   cursor: pointer;
-  padding: 4px 0;
 }
 .content {
   position: absolute;
-  right: 0;
   z-index: 999;
-  min-width: 130px;
-  width: 100%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.24);
 }

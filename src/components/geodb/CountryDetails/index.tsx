@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { SiWikidata, SiWikipedia, SiGooglemaps } from 'react-icons/si';
 import { BsCurrencyExchange, BsPhoneVibrate } from 'react-icons/bs';
+import ReactCountryFlag from 'react-country-flag';
 import { I18nContext } from 'store/i18n';
 import { useCountryDetails, useI18n } from 'hooks';
 import { Button, Loader } from 'common';
@@ -36,8 +37,7 @@ const CountryDetails = (): JSX.Element => {
     message = ''
   } = country;
 
-  const { name, code, capital, flagImageUri, callingCode, wikiDataId, numRegions, currencyCodes } =
-    data;
+  const { name, code, capital, callingCode, wikiDataId, numRegions, currencyCodes } = data;
 
   const loadMore = (): void =>
     setCurrentState((prevState) => ({
@@ -60,7 +60,10 @@ const CountryDetails = (): JSX.Element => {
         <div>
           {name && (
             <h1 className={styles.titleDetails}>
-              {name} <img alt="flag" src={flagImageUri} className={styles.flag} />
+              {name}
+              <span className={styles.flagBlock}>
+                <ReactCountryFlag countryCode={code} className={styles.flag} title={name} svg />
+              </span>
             </h1>
           )}
           <div className={styles.info}>

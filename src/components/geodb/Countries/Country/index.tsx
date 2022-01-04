@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
+import ReactCountryFlag from 'react-country-flag';
 import { useI18n } from 'hooks';
 import { IListCountries } from 'types';
 import { geoSearchParams } from 'common/utils';
@@ -24,6 +25,7 @@ const Country: FC<Props> = ({ countries, loadMore, isLoadingMore }) => {
         {data.map(({ code, name }, index: number) => (
           <Link to={code} key={code} className={styles.item}>
             <span className={styles.index}>{++index}.</span> {name}
+            <ReactCountryFlag countryCode={code} className={styles.flagSmall} title={name} svg />
           </Link>
         ))}
       </div>

@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
+import ReactCountryFlag from 'react-country-flag';
 import { useI18n } from 'hooks';
 import { IListCities } from 'types';
 import { geoSearchParams } from 'common/utils';
@@ -21,9 +22,15 @@ const City: FC<Props> = ({ cities, loadMore, isLoadingMore }) => {
     <div>
       <h3 className={styles.title}>{t('main.cities')}:</h3>
       <div className={styles.itemsList}>
-        {data.map(({ id, name, country, wikiDataId }) => (
+        {data.map(({ id, name, country, countryCode, wikiDataId }) => (
           <Link key={id} to={wikiDataId} className={styles.item}>
-            {name} <span className={styles.country}>{country}</span>
+            {name}
+            <ReactCountryFlag
+              countryCode={countryCode}
+              className={styles.flagSmall}
+              title={country}
+              svg
+            />
           </Link>
         ))}
       </div>

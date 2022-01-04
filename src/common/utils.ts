@@ -13,6 +13,27 @@ export const geoSearchParams = (link: Array<ILink> = []) => {
   return { limit, offsetCurrent, offsetLast };
 };
 
+export const setLocalisation = (localisation: string | undefined) => {
+  switch (localisation) {
+    case 'de':
+      return 'DE';
+    case 'es':
+      return 'ES';
+    case 'fr':
+      return 'FR';
+    case 'it':
+      return 'IT';
+    case 'pt':
+      return 'PT';
+    case 'pt_BR':
+      return 'BR';
+    case 'ru':
+      return 'RU';
+    default:
+      return 'GB';
+  }
+};
+
 // TODO:
 export type ActionMap<M extends { [index: string]: any }> = {
   [Key in keyof M]: M[Key] extends undefined

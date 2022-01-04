@@ -16,19 +16,19 @@
   width: var(--width-page);
   padding: 0 15px;
 }
-.nav {
-}
 .link, .linkActive  {
+  border-radius: 2px;
   color: var(--color-white);
   cursor: pointer;
   vertical-align: middle;
-  margin-right: 20px;
+  padding: 2px 10px;
 }
-.link:hover {
+.link:hover, .linkActive:hover {
   text-decoration: underline;
 }
 .linkActive {
-  text-decoration: underline;
+  color: var(--color-black);
+  background-color: var(--color-light-blue);
 }
 .icon {
   font-size: 20px;

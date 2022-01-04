@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { SiWikidata, SiWikipedia, SiGooglemaps } from 'react-icons/si';
+import ReactCountryFlag from 'react-country-flag';
 import { I18nContext } from 'store/i18n';
 import { useCityDetails, useI18n } from 'hooks';
 import { Button, Loader } from 'common';
@@ -57,7 +58,19 @@ const CityDetails = (): JSX.Element => {
         <Loader />
       ) : (
         <div>
-          {name && <h1 className={styles.titleDetails}>{name}</h1>}
+          {name && (
+            <h1 className={styles.titleDetails}>
+              {name}
+              <span className={styles.flagBlock}>
+                <ReactCountryFlag
+                  countryCode={countryCode}
+                  className={styles.flag}
+                  title={country}
+                  svg
+                />
+              </span>
+            </h1>
+          )}
           <div className={styles.info}>
             {type && (
               <div className={styles.infoItem}>

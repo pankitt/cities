@@ -8,7 +8,7 @@ import styles from './index.module.css';
 const Header = (): JSX.Element => (
   <div className={styles.wrapper}>
     <div className={styles.inner}>
-      <nav className={styles.nav}>
+      <nav>
         <Link to={Page.HOME} className={styles.link}>
           <MdOutlineHomeWork className={styles.icon} />
         </Link>
