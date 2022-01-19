@@ -9,10 +9,13 @@
   margin: 0 auto;
   padding: 10px 25px;
 }
-.button:hover {
+.button:hover:not([disabled]) {
   background-color: var(--color-light-blue);
 }
 .button:active {
   box-shadow: 2px 2px var(--color-blue-grey);
   transform: translateY(2px);
+}
+.button[disabled] {
+  cursor: auto;
 }
