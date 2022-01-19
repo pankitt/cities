@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useCallback } from 'react';
 import { ISearchData } from 'types';
 import { I18nContext } from 'store/i18n';
 import Country from 'components/geodb/Countries/Country';
@@ -25,12 +25,13 @@ const Countries = (): JSX.Element => {
       loadMoreCounter: ++prevState.loadMoreCounter
     }));
 
-  const onSearch = (data: ISearchData) =>
+  const onSearch = useCallback((data: ISearchData) => {
     setCurrentState((prevState) => ({
       ...prevState,
       offset: 0,
       namePrefix: data.name
     }));
+  }, []);
 
   useEffect(() => {
     setCurrentState((prevState) => ({

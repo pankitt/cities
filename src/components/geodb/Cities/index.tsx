@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useCallback } from 'react';
 import ReactCountryFlag from 'react-country-flag';
 import { AiOutlineClose } from 'react-icons/ai';
 import { ISearchData } from 'types';
@@ -32,12 +32,13 @@ const Cities = (): JSX.Element => {
       loadMoreCounter: ++prevState.loadMoreCounter
     }));
 
-  const onSearch = (data: ISearchData) =>
+  const onSearch = useCallback((data: ISearchData) => {
     setCurrentState((prevState) => ({
       ...prevState,
       offset: 0,
       namePrefix: data.name
     }));
+  }, []);
 
   useEffect(() => {
     setCurrentState((prevState) => ({

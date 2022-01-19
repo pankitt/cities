@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect, useCallback } from 'react';
 import { ISearchData } from 'types';
 import { useRegions } from 'hooks';
 import Region from 'components/geodb/Regions/Region';
@@ -27,12 +27,13 @@ const Regions: FC<Props> = ({ code = '', language }) => {
       offset: offsetCurrent,
       loadMoreCounter: ++prevState.loadMoreCounter
     }));
-  const onSearch = (data: ISearchData) =>
+  const onSearch = useCallback((data: ISearchData) => {
     setCurrentState((prevState) => ({
       ...prevState,
       offset: 0,
       namePrefix: data.name
     }));
+  }, []);
 
   useEffect(() => {
     setCurrentState((prevState) => ({
