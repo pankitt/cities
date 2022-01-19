@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import debounce from 'lodash/debounce';
 import { ICountryDetailsFetch, IGeoParamsHook } from 'types';
 import { getCountryDetails } from 'api';
 
@@ -23,12 +24,18 @@ export const useCountryDetails = ({
       }
     };
 
-    fetchData()
-      .then(() => setIsLoading(false))
-      .catch(console.error);
+    const loadData = debounce(
+      () =>
+        fetchData()
+          .then(() => setIsLoading(false))
+          .catch(console.error),
+      1000
+    );
+    loadData();
 
     return () => {
       cleanup = true;
+      loadData.cancel();
     };
   }, [languageCode, detailsCode, loadMoreCounter]);
 

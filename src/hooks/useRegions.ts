@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import debounce from 'lodash/debounce';
 import { IListRegions, IGeoParamsHook } from 'types';
 import { getRegions } from 'api';
 import { GeoContext, setRegionsAction } from 'store/geodb';
@@ -19,9 +20,9 @@ export const useRegions = ({
 
   useEffect(() => {
     let cleanup = false;
+    setIsLoadingMore(true);
 
     const fetchData = async () => {
-      setIsLoadingMore(true);
       const result = await getRegions({
         limit,
         offset,
@@ -34,20 +35,24 @@ export const useRegions = ({
       }
     };
 
-    const timeoutId = setTimeout(() => {
-      if (detailsCode) {
+    const loadData = debounce(
+      () =>
         fetchData()
           .then(() => setIsLoading(false))
           .then(() => setIsLoadingMore(false))
-          .catch(console.error);
-      }
-    }, 1000);
+          .catch(console.error),
+      1000
+    );
+
+    if (detailsCode) {
+      loadData();
+    }
 
     return () => {
       cleanup = true;
-      clearTimeout(timeoutId);
+      loadData.cancel();
     };
-  }, [limit, offset, languageCode, namePrefix, detailsCode, loadMoreCounter]);
+  }, [limit, offset, languageCode, namePrefix, detailsCode, loadMoreCounter, dispatch]);
 
   useEffect(() => {
     setRegions(state.regions);

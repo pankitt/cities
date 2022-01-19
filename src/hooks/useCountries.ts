@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import debounce from 'lodash/debounce';
 import { IListCountries, IGeoParamsHook } from 'types';
 import { getCountries } from 'api';
 import { GeoContext, setCountriesAction } from 'store/geodb';
@@ -18,9 +19,9 @@ export const useCountries = ({
 
   useEffect(() => {
     let cleanup = false;
+    setIsLoadingMore(true);
 
     const fetchData = async () => {
-      setIsLoadingMore(true);
       const result = await getCountries({
         limit,
         offset,
@@ -32,15 +33,21 @@ export const useCountries = ({
       }
     };
 
-    fetchData()
-      .then(() => setIsLoading(false))
-      .then(() => setIsLoadingMore(false))
-      .catch(console.error);
+    const loadData = debounce(
+      () =>
+        fetchData()
+          .then(() => setIsLoading(false))
+          .then(() => setIsLoadingMore(false))
+          .catch(console.error),
+      500
+    );
+    loadData();
 
     return () => {
       cleanup = true;
+      loadData.cancel();
     };
-  }, [limit, offset, languageCode, namePrefix, loadMoreCounter]);
+  }, [limit, offset, languageCode, namePrefix, loadMoreCounter, dispatch]);
 
   useEffect(() => {
     setCountries(state.countries);

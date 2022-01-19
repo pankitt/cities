@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import debounce from 'lodash/debounce';
 import { ICityDetailsFetch, IGeoParamsHook } from 'types';
 import { getCityDetails } from 'api';
 
@@ -23,12 +24,18 @@ export const useCityDetails = ({
       }
     };
 
-    fetchData()
-      .then(() => setIsLoading(false))
-      .catch(console.error);
+    const loadData = debounce(
+      () =>
+        fetchData()
+          .then(() => setIsLoading(false))
+          .catch(console.error),
+      1000
+    );
+    loadData();
 
     return () => {
       cleanup = true;
+      loadData.cancel();
     };
   }, [languageCode, detailsCode, loadMoreCounter]);
 
