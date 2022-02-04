@@ -71,7 +71,7 @@ const CountryDetails = (): JSX.Element => {
               </span>
             </h1>
           )}
-          {code && (
+          {numRegions > 0 && code && (
             <Link
               to={Page.CITIES}
               className={styles.linkCities}
