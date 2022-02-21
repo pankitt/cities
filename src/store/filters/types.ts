@@ -1,4 +1,4 @@
-export enum Types {
+export const enum Types {
   SET_COUNTRIES = 'SET_COUNTRIES'
 }
 

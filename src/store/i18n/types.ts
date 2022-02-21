@@ -1,6 +1,6 @@
 import { ILanguage } from 'types';
 
-export enum Types {
+export const enum Types {
   SET_LANGUAGE = 'SET_LANGUAGE'
 }
 

@@ -1,6 +1,6 @@
 import { IListCountries, IListCities, IListRegions } from 'types';
 
-export enum Types {
+export const enum Types {
   FETCH_COUNTRIES = 'FETCH_COUNTRIES',
   FETCH_REGIONS = 'FETCH_REGIONS',
   FETCH_CITIES = 'FETCH_CITIES'
