@@ -1,4 +1,4 @@
-import React, { useReducer, createContext, FC, Dispatch } from 'react';
+import React, { useReducer, createContext, FC, Dispatch, ReactNode } from 'react';
 import { initialState, reducer } from './reducers';
 import { InitialStateType, Actions } from './types';
 
@@ -10,7 +10,11 @@ export const GeoContext = createContext<{
   dispatch: () => null
 });
 
-export const GeoProvider: FC = ({ children }) => {
+interface Props {
+  children: ReactNode;
+}
+
+export const GeoProvider: FC<Props> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return <GeoContext.Provider value={{ state, dispatch }}>{children}</GeoContext.Provider>;

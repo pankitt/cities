@@ -1,4 +1,4 @@
-import React, { useReducer, createContext, useEffect, FC, Dispatch } from 'react';
+import React, { useReducer, createContext, useEffect, FC, Dispatch, ReactNode } from 'react';
 import { useLocalStorage } from 'hooks';
 import { initialState, reducer } from './reducers';
 import { InitialStateType, Actions } from './types';
@@ -13,7 +13,11 @@ export const I18nContext = createContext<{
   dispatch: () => null
 });
 
-export const I18nProvider: FC = ({ children }) => {
+interface Props {
+  children: ReactNode;
+}
+
+export const I18nProvider: FC<Props> = ({ children }) => {
   const [language, setLanguage] = useLocalStorage('language', 'en');
   const [state, dispatch] = useReducer(reducer, {
     language,
